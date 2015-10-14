@@ -1,0 +1,51 @@
+https://docs.google.com/document/d/1MO9EYPl78vPqQCi6Ou8BkjBKL10e_4796ZisOS4wBvU/edit
+
+Descripción del proyecto
+ 
+Comenzaremos creando nuestra primera pantalla de entrada que dará paso a la pantalla o menú de arranque de la aplicación.
+
+El objetivo es aplicar y comprender diversos aspectos realizados en este módulo y en Interfaces:
+
+• Aplicar una imagen en la pantalla inicial
+
+• Modificar Android Manifiest
+
+• Lanzar una segunda pantalla
+
+
+NO EXISTE UNA ÚNICA SOLUCIÓN
+ 
+
+Pasos a realizar
+ 
+1. Crearemos un nuevo proyecto con dos nuevos Activity: SplashActivity y MainActivity
+
+2. En SplashActivity (o cualquier otro nombre):
+
+	- Configuraremos para que se visualice la imagen a pantalla completa.
+
+	- Programaremos un Timer para que al cabo de unos 3 segundos de paso al Main Activity mediante startActivity
+
+	- Es voluntario que durante ese tiempo aparezca un icono de carga.
+
+3. En MainActivity (o cualquier otro nombre):
+
+	- Un simple texto que muestre un texto.
+
+
+
+Cómo se sube
+
+Enlace a proyecto en github
+
+
+Vídeo explicativo
+ 
+https://vimeo.com/142216266
+ 
+
+Cómo se evalúa
+ 
+https://docs.google.com/document/d/1Z70znoJREYGKPXkGwhiZinvzaNUmQicrtpS47IfxbvY/edit
+ 
+
