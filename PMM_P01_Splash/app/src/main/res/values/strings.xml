@@ -3,11 +3,12 @@
 
     <string name="app_name">PMM_P01_Splash</string>
 
-    <!-- Nombres de las opciones de menú (action bar) -->
+    <!-- Nombres de las opciones del menú (action bar) -->
 
     <string name="action_settings">Settings</string>
 
     <!-- Texto a mostrar en la aplicación principal -->
 
     <string name="texto_main_activity">Alumno: Miguel I. García López</string>
+
 </resources>

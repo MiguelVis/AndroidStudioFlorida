@@ -33,8 +33,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Método llamado al crear el menú. Actualmente sólo tiene la funcionalidad
-     * por defecto.
+     * Método llamado al crear el menú.
      *
      * @param menu  Menú
      * @return  True para mostrar el menú, false en caso contrario
@@ -63,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Gestionar la opción
         switch(id) {
+
             // Settings
             case R.id.action_settings :
                 // De momento, nada

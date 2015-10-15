@@ -12,14 +12,15 @@ import java.util.TimerTask;
 /**
  * Implementación de una Splash Screen.
  *
- * Ésta será la activity de inicio de la aplicación.
+ * Ésta será la activity de inicio de la aplicación, que dará paso
+ * a la activity principal.
  *
  * Durante 3 segundos, se mostrará una barra de progreso, que indicará
  * el tiempo transcurrido desde el inicio de la aplicación / tiempo
  * restante para que se inicie la otra activity.
  *
- * Se ha desarrollado de manera que si la aplicación entra en pausa o es parada,
- * si luego es restablecida, continúe contando a partir del tiempo que ya había
+ * Se ha desarrollado de manera que si la activity entra en pausa o es parada,
+ * y luego es restablecida, continúe contando a partir del tiempo que ya había
  * transcurrido. Es decir, que no vuelva a comenzar a contar desde cero.
  *
  * @author  Miguel I. García López
@@ -37,8 +38,8 @@ public class SplashActivity extends AppCompatActivity {
     // Tiempo total en milisegundos, durante el cual se mostrará la Splash Screen
     private static final long DURACION_TOTAL = 3000;
 
-    // Duración en milisegundos, de cada paso, para actualizar la barra de progreso
-    private static final long DURACION_PASO = DURACION_TOTAL / 10;
+    // Duración en milisegundos de cada paso, para actualizar la barra de progreso
+    private static final long DURACION_PASO = 125;
 
     // Contador de tiempo transcurrido
     private long tiempoTranscurrido;
@@ -78,7 +79,8 @@ public class SplashActivity extends AppCompatActivity {
 
            Quizás sea un problema derivado del uso de la librería de compatibilidad.
 
-           Como alternativa, se ha creado un tema adicional para uso exclusivo de esta activity.
+           Como alternativa, se ha creado un tema adicional para uso exclusivo de esta activity,
+           y se ha indicado en el manifiesto.
            ============================================================================================ */
 
         // Establecer layout
@@ -92,7 +94,7 @@ public class SplashActivity extends AppCompatActivity {
             // Recuperar el tiempo ya transcurrido
             tiempoTranscurrido = savedInstanceState.getLong(KEY_TIEMPO_TRANSCURRIDO);
         }
-        // La activity se crea por primera vez, inicializar algunas cosas
+        // Si la activity se crea por primera vez, inicializar algunas cosas
         else {
             // Establecer el tiempo ya transcurrido a cero
             tiempoTranscurrido = 0;
@@ -181,7 +183,7 @@ public class SplashActivity extends AppCompatActivity {
      * Clase que implementa una tarea del timer.
      *
      * Dicha tarea gestiona el tiempo transcurrido, actualiza la barra de progreso,
-     * y ejecuta la otra activity (y finaliza ésta) si se ha llegado al final del tiempo.
+     * y ejecuta la otra activity (y finaliza ésta) si se ha llegado al final del tiempo total.
      */
     private class EjecutaPaso extends TimerTask {
 
@@ -202,12 +204,17 @@ public class SplashActivity extends AppCompatActivity {
             // Incrementar el tiempo transcurrido
             tiempoTranscurrido += DURACION_PASO;
 
+            // Ajustar al valor máximo si hay desbordamiento
+            if(tiempoTranscurrido > DURACION_TOTAL) {
+                tiempoTranscurrido = DURACION_TOTAL;
+            }
+
             // Actualizar la barra de progreso
             barraProgreso.setProgress((int) (tiempoTranscurrido * 100 / DURACION_TOTAL));
 
             // Si ya ha transcurrido el tiempo total, iniciar la otra activity,
             // y finalizar ésta
-            if(tiempoTranscurrido >= DURACION_TOTAL) {
+            if(tiempoTranscurrido == DURACION_TOTAL) {
                 // Log
                 Log.i(TAG, "EjecutaPaso = iniciando la otra activity y finalizando ésta");
 
