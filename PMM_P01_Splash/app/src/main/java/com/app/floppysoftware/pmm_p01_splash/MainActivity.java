@@ -11,7 +11,7 @@ import android.view.MenuItem;
  * Muestra un mensaje.
  *
  * @author  Miguel I. García López
- * @version 1.00
+ * @version 1.0
  * @since   14 Oct 2015
  */
 public class MainActivity extends AppCompatActivity {

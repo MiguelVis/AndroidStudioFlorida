@@ -24,7 +24,7 @@ import java.util.TimerTask;
  * transcurrido. Es decir, que no vuelva a comenzar a contar desde cero.
  *
  * @author  Miguel I. García López
- * @version 1.00
+ * @version 1.0
  * @since   13 Oct 2015
  */
 public class SplashActivity extends AppCompatActivity {

@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- Nota acerca de los atributos versionCode y versionName:
+
+     Según indica la documentación oficial de Android:
+
+     http://developer.android.com/tools/publishing/versioning.html
+
+     "You define both of these version attributes in the <manifest> element of the manifest file or the Gradle build file."
+
+     Por claridad, lo indico también aquí, pero se ha de tener en cuenta que únicamente
+     serán utilizados los valores indicados en el archivo app/build.gradle, por lo que necesariamente
+     se han de establecer también en dicho archivo.
+     -->
+
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.app.floppysoftware.pmm_p01_splash" >
+    package="com.app.floppysoftware.pmm_p01_splash"
+    android:versionCode="1"
+    android:versionName="1.0"
+    >
 
     <application
         android:allowBackup="true"
