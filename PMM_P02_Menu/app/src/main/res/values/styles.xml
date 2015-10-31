@@ -1,0 +1,23 @@
+<resources>
+
+    <!-- Tema base de la aplicación -->
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+    </style>
+
+    <!-- Tema de la Splash Screen, para no mostrar ni título, ni ActionBar -->
+
+    <style name="AppTheme.Splash" parent="AppTheme">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+    </style>
+
+    <!-- Tema del menú principal, para no mostrar ni título, ni ActionBar -->
+
+    <style name="AppTheme.Menu" parent="AppTheme">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+    </style>
+
+</resources>

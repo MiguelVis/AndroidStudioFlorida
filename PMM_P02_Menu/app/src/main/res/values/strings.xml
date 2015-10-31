@@ -1,0 +1,17 @@
+<resources>
+    <!-- Nombre de la aplicación -->
+
+    <string name="app_name">MathDice</string>
+
+    <!-- Nombres de las opciones del menú (action bar) - no utilizado actualmente -->
+
+    <string name="action_settings">Settings</string>
+
+    <!-- Opciones del menú principal -->
+
+    <string name="menu_perfil">Perfil</string>
+    <string name="menu_juego">Juego</string>
+    <string name="menu_instrucciones">Instrucciones</string>
+    <string name="menu_informacion">Información</string>
+
+</resources>

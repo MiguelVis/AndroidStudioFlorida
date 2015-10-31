@@ -1,0 +1,58 @@
+https://docs.google.com/document/d/1c2VPuO8vgkJ_-_YyivMSLrN3zczPbX5IaTV6AuO4drI/edit
+
+P02 - MENU
+----------
+
+Descripción del proyecto
+ 
+
+A partir del anterior desarrollo, a lo mucho, cambiando la imagen del inicio, vamos a añadir un menu en nuestra pantalla inicial.
+
+
+Para ello en el segundo activity, crearemos un listview que cargará al menos 4 opciones:
+
+- Perfil
+
+- Juego
+
+- Instrucciones
+
+- Información
+
+
+El objetivo es aplicar el concepto de ListView visto
+
+NO EXISTE UNA ÚNICA SOLUCIÓN
+
+---------------
+
+Pasos a realizar
+ 
+1. Utilizaremos el primer proyecto
+
+2. Podemos cambiar la imagen de inicio o cambiarla, es voluntario
+
+3. En el activity de Menu:
+
+	- Crearemos un ListView
+
+	- Cada elemento del listview tendrá al menos una imagen y un texto
+
+	- Modificaremos el adapter para que cada elemento varíe dependiendo de la fila
+
+	- De forma voluntaria podemos crear un diseño más atractivo
+
+----------------------
+
+Cómo se sube
+
+Enlace a proyecto en github
+
+
+Vídeo explicativo
+
+https://vimeo.com/143966281
+
+Cómo se evalúa
+
+https://docs.google.com/document/d/1Z70znoJREYGKPXkGwhiZinvzaNUmQicrtpS47IfxbvY/edit

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Nota acerca de los atributos versionCode y versionName:
+
+     Según indica la documentación oficial de Android:
+
+     http://developer.android.com/tools/publishing/versioning.html
+
+     "You define both of these version attributes in the <manifest> element of the manifest file or the Gradle build file."
+
+     Por claridad, lo indico también aquí, pero se ha de tener en cuenta que únicamente
+     serán utilizados los valores indicados en el archivo app/build.gradle, por lo que necesariamente
+     se han de establecer también en dicho archivo.
+     -->
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.app.floppysoftware.pmm_p02_menu"
+    android:versionCode="1"
+    android:versionName="1.0"
+    >
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+
+        <!-- Splash Screen: Es la activity de inicio, ocupa toda
+             la pantalla del dispositivo, no muestra título ni menú, de ahí
+             que utilice un tema especial.
+             -->
+
+        <activity
+            android:name=".SplashActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.Splash"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Menu: Es la activity del menú principal, ocupa toda
+             la pantalla del dispositivo, no muestra título ni menú, de ahí
+             que utilice un tema especial.
+             -->
+
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.Menu"
+            >
+        </activity>
+
+    </application>
+
+</manifest>

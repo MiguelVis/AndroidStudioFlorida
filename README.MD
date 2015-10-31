@@ -11,3 +11,8 @@ P01
 ---
 
 Proyecto 01: Splash Screen.
+
+P02
+---
+
+Proyecto 02: Añadiendo un menú con ListView.

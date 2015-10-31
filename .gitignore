@@ -1,0 +1,12 @@
+# GITIGNORE generalista para carpeta de proyectos
+# Directorio .gradle
+.gradle/
+# Ficheros cuyo nombre sea local.properties
+local.properties
+workspace.xml
+# Directorios libraries
+libraries/
+# Directorios build
+build/
+# Miniaturas para preview de imágenes (Windows)
+Thumbs.db
