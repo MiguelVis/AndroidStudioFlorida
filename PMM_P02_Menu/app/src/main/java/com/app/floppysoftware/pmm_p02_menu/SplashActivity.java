@@ -45,10 +45,10 @@ public class SplashActivity extends AppCompatActivity {
     private long tiempoTranscurrido;
 
     // Barra de progreso, para mostrar tiempo transcurrido / restante
-    private ProgressBar barraProgreso = null;
+    private ProgressBar barraProgreso;
 
     // Timer utilizado para medir el tiempo transcurrido
-    private Timer timer = null;
+    private Timer timer;
 
     /**
      * Método llamado al crear la activity. También es llamado si se cambia
@@ -222,12 +222,12 @@ public class SplashActivity extends AppCompatActivity {
                 cancelarTimer();
 
                 // Intent para ejecutar la otra activity
-                Intent intentMainActivity = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intentMainActivity = new Intent(getApplicationContext(), MenuActivity.class);
 
                 // Comenzar la otra activity
                 startActivity(intentMainActivity);
 
-                // Finalizar esta activity
+                // Finalizar esta activity, de forma que no se pueda volver a ella
                 finish();
             }
         }

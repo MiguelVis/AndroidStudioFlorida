@@ -14,17 +14,14 @@ import java.util.ArrayList;
  * Clase que implementa el adaptador para el ListView del menú principal.
  *
  * @author  Miguel I. García López
- * @version 1.0
+ * @version 1.1
  * @since   29 Oct 2015
  */
 public class MenuAdapter extends ArrayAdapter<OpcionMenu> {
 
     // Atributos
     private Context context;                // Contexto
-    private ArrayList<OpcionMenu> opciones; // Opciones
-    private LayoutInflater inflater;        // Inflater para el layout de la opción
-    private ImageView imagen;               // ImageView para la imagen de la opción
-    private TextView texto;                 // TextView para el texto de la opción
+    private ArrayList<OpcionMenu> opciones; // Opciones del menú
 
     /**
      * Constructor.
@@ -40,18 +37,16 @@ public class MenuAdapter extends ArrayAdapter<OpcionMenu> {
         // Guardar atributos
         this.context = context;   // Contexto
         this.opciones = opciones; // Opciones
-
-        // Guardar inflater
-        inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     /**
-     * Devolver el view que corresponde a una opción del menú.
+     * Transformar y devolver el view que corresponde a una opción del menú. En este
+     * caso, se trata de un layout con una imagen y un texto.
      *
      * @param position     Posición en el ListView
      * @param convertView  View (layout) a transformar y devolver
      * @param parent       ListView
-     * @return             View correspondiente a la opción del menú
+     * @return             View (layout) transformado
      */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -59,16 +54,19 @@ public class MenuAdapter extends ArrayAdapter<OpcionMenu> {
         // Inflar el layout si no ha sido inflado todavía
         if(convertView == null) {
 
+            // Tomar inflater
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
             // Inflar el layout
             convertView = inflater.inflate(R.layout.layout_opcion_menu, parent, false);
-
-            // Tomar los views del layout
-            this.imagen = (ImageView) convertView.findViewById(R.id.imageViewOpcionMenu);
-            this.texto = (TextView) convertView.findViewById(R.id.textViewOpcionMenu);
         }
 
         // Tomar el objeto que referencia la opción de menú
         OpcionMenu opcion = opciones.get(position);
+
+        // Tomar los views del layout
+        ImageView imagen = (ImageView) convertView.findViewById(R.id.imageViewOpcionMenu);
+        TextView texto = (TextView) convertView.findViewById(R.id.textViewOpcionMenu);
 
         // Cambiar la imagen y su color de fondo
         imagen.setImageResource(opcion.getImagenId());

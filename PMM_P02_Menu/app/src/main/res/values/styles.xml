@@ -6,14 +6,14 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <!-- Tema de la Splash Screen, para no mostrar ni título, ni ActionBar -->
+    <!-- Tema de la Splash Screen, para que no muestre ni título, ni ActionBar -->
 
     <style name="AppTheme.Splash" parent="AppTheme">
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
     </style>
 
-    <!-- Tema del menú principal, para no mostrar ni título, ni ActionBar -->
+    <!-- Tema del menú principal, para que no muestre ni título, ni ActionBar -->
 
     <style name="AppTheme.Menu" parent="AppTheme">
         <item name="windowNoTitle">true</item>

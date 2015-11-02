@@ -20,10 +20,10 @@ import java.util.ArrayList;
  * @version 1.1
  * @since   14 Oct 2015
  */
-public class MainActivity extends AppCompatActivity {
+public class MenuActivity extends AppCompatActivity {
 
     // Tag para el log
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "MenuActivity";
 
     // Atributos
     private ArrayList<OpcionMenu> opcionesMenu;  // Opciones del menú
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         // Establecer layout
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_menu);
 
         // Log
         Log.i(TAG, "onCreate");
@@ -75,17 +75,31 @@ public class MainActivity extends AppCompatActivity {
      * Inner class. Listener para la selección de opciones del menú principal.
      */
     private class ListenerListViewMenu implements AdapterView.OnItemClickListener {
+        /**
+         * Método que se llama al seleccionar una opción del menú.
+         *
+         * @param parent    ListView que contiene el menú
+         * @param view      View del elemento seleccionado
+         * @param position  Posición del item
+         * @param id        Id de fila del item seleccionado
+         */
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
             // Recuperar opción seleccionada
             OpcionMenu opcion = (OpcionMenu) parent.getItemAtPosition(position);
 
-            // Mostrar mensaje con el texto de la opción seleccionada
-            Toast.makeText(MainActivity.this, opcion.getTextoId(), Toast.LENGTH_SHORT).show();
+            // Recuperar el texto de la opción seleccionada
+            int idTextoOpcion = opcion.getTextoId();
 
-            // También podríamos haber recuperado el texto con:
-            //
-            // opcionesMenu.get(position).getTextoId()
+            // También podríamos haber recuperado el texto de esta otra forma:
+            // int idTextoOpcion = opcionesMenu.get(position).getTextoId();
+
+            // O de esta otra:
+            // TextView tv = (TextView) view.findViewById(R.id.textViewOpcionMenu);
+            // CharSequence idTextoOpcion = tv.getText();
+
+            // Mostrar mensaje con el texto de la opción seleccionada
+            Toast.makeText(MenuActivity.this, idTextoOpcion, Toast.LENGTH_SHORT).show();
         }
     }
 }

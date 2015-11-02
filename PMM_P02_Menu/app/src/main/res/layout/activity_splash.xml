@@ -5,7 +5,7 @@
     tools:context="com.app.floppysoftware.pmm_p02_menu.SplashActivity">
 
     <!--
-        Se han eliminado del RelativeLayout los siguientes atributos:
+        Se ha eliminado del RelativeLayout los siguientes atributos:
 
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
@@ -17,8 +17,8 @@
 
     <ImageView
         android:id="@+id/imageViewSplash"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:background="@drawable/banner_splash"

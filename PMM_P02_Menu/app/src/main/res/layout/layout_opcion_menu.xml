@@ -8,6 +8,10 @@
     android:orientation="horizontal"
     >
 
+    <!-- Nota: La imagen y el texto que aparecen, se han incluido únicamente para que
+         se vea mejor el efecto en tiempo de diseño.
+         -->
+
     <!-- Imagen correspondiente a la opción -->
 
     <ImageView
