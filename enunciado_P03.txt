@@ -1,0 +1,44 @@
+P03 MathDice
+
+https://docs.google.com/document/d/1x7M7hMHxreMwu3Y7kSUtHzgvweWFNTofo9ERDsUkgRI/edit?pli=1
+
+Descripción del proyecto
+
+Nuevamente partiremos del anterior proyecto para dar un paso más para acabar hacer un proyecto completo sobre el juego MathDice. 
+
+Para ello convertiremos nuestro proyecto de múltiples Activities a múltiples Fragments
+
+El objetivo es aplicar el concepto de Fragment visto
+
+NO EXISTE UNA ÚNICA SOLUCIÓN
+
+Pasos a realizar OBLIGATORIO (hasta 8 puntos)
+ 
+1.Utilizaremos el segundo proyecto
+
+2.Tendremos un único activity (además del splash) que contendrá
+
+- Un Menu que será un fragment estático con el ListView creado en el proyecto 2
+- Un contenedor de fragment dinámicos
+
+
+Pasos a realizar VOLUNTARIOS (hasta 10 puntos)
+
+1.Crearemos
+
+- El listener del menu con el activity para cargar el juego
+- El Fragment que realizará el juego
+
+
+Cómo se sube
+
+Enlace a proyecto en github
+
+Vídeo explicativo
+
+https://vimeo.com/145259088
+
+Cómo se evalúa
+
+https://docs.google.com/document/d/1Z70znoJREYGKPXkGwhiZinvzaNUmQicrtpS47IfxbvY/edit?pli=1
+

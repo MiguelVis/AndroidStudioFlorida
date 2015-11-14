@@ -1,0 +1,33 @@
+<resources>
+    <!-- Nombre de la aplicación -->
+
+    <string name="app_name">MathDice</string>
+
+    <!-- Nombres de las opciones del menú (action bar) - no utilizado actualmente -->
+
+    <string name="action_settings">Settings</string>
+
+    <!-- Opciones del menú principal -->
+
+    <string name="menu_perfil">Perfil</string>
+    <string name="menu_juego">Juego</string>
+    <string name="menu_instrucciones">Instrucciones</string>
+    <string name="menu_informacion">Información</string>
+
+    <!-- Nombre del alumno -->
+
+    <string name="alumno">Alumno: Miguel I. García López</string>
+
+    <!-- Perfil: No implementado -->
+
+    <string name="perfil_no_implementado">Perfil: No implementado.</string>
+
+    <!-- Instrucciones: No implementado -->
+
+    <string name="instrucciones_no_implementado">Instrucciones: No implementado.</string>
+
+    <!-- Información: No implementado -->
+
+    <string name="informacion_no_implementado">Información: No implementado.</string>
+
+</resources>

@@ -16,3 +16,8 @@ P02
 ---
 
 Proyecto 02: Añadiendo un menú con ListView.
+
+P03
+---
+
+Proyecto 03: Juego MathDice.

@@ -1,0 +1,42 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.app.floppysoftware.pmm_p03_mathdice.SplashActivity">
+
+    <!--
+        Se ha eliminado del RelativeLayout los siguientes atributos:
+
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+    -->
+
+    <!-- Imagen que ocupa toda la pantalla del dispositivo -->
+
+    <ImageView
+        android:id="@+id/imageViewSplash"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/banner_splash"
+        />
+
+    <!-- Barra de progreso que indica el tiempo transcurrido / restante -->
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="32dp"
+        android:progress="0"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        />
+
+</RelativeLayout>
