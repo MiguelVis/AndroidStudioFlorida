@@ -37,9 +37,12 @@ public class JuegoFragment extends Fragment {
     private TextView textViewResultado;
 
     // Id. de los recursos de las imágenes para los dados
-    private int [] recursoIdDadosTres = new int[] {R.drawable.dado_rojo_1, R.drawable.dado_rojo_2, R.drawable.dado_rojo_3};
-    private int [] recursoIdDadosSeis = new int[] {R.drawable.dado_azul_1, R.drawable.dado_azul_2, R.drawable.dado_azul_3,
+    private int [] recursoIdDadosTres = new int [] {R.drawable.dado_rojo_1, R.drawable.dado_rojo_2, R.drawable.dado_rojo_3};
+    private int [] recursoIdDadosSeis = new int [] {R.drawable.dado_azul_1, R.drawable.dado_azul_2, R.drawable.dado_azul_3,
             R.drawable.dado_azul_4, R.drawable.dado_azul_5, R.drawable.dado_azul_6 };
+    private int [] recursoIdDodecaedro = new int [] {R.drawable.dode_1, R.drawable.dode_2, R.drawable.dode_3, R.drawable.dode_4,
+            R.drawable.dode_5, R.drawable.dode_6, R.drawable.dode_7, R.drawable.dode_8, R.drawable.dode_9,
+            R.drawable.dode_10, R.drawable.dode_11, R.drawable.dode_12};
 
     // Valores de los dados
     private int [] valorDadosTres = new int [2];
@@ -282,7 +285,7 @@ public class JuegoFragment extends Fragment {
         valorDodecaedro = random.nextInt(11) + 1;
 
         // Modificar imagen del dodecaedro, de acuerdo a su valor
-        // FIXME
+        imageViewDodecaedro.setImageResource(recursoIdDodecaedro[valorDodecaedro - 1]);
 
         // Inicializar operación a realizar
         resetOperacion();
@@ -550,8 +553,13 @@ public class JuegoFragment extends Fragment {
         @Override
         public void onClick(View v) {
 
-            // Mostrar el valor del dodecaedro
-            Toast.makeText(getActivity(), "Dodecaedro: " + valorDodecaedro, Toast.LENGTH_SHORT).show();
+            // Toast.makeText(getActivity(), "Dodecaedro: " + valorDodecaedro, Toast.LENGTH_SHORT).show();
+
+            // Inicializar todos los datos del juego
+            resetPartida();
+
+            // Mostrar los cambios
+            mostrarOperacion();
         }
     };
 
