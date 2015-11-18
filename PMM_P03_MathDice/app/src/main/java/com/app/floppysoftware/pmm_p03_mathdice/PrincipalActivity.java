@@ -5,19 +5,18 @@ import android.app.FragmentTransaction;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
 
 /**
- * Clase que implementa el menú principal mediante fragments.
+ * Clase que implementa la pantalla principal mediante fragments.
  *
  * @author  Miguel I. García López
- * @version 1.2
+ * @version 1.3
  * @since   10 Nov 2015
  */
-public class MenuActivity extends Activity implements MenuFragment.MenuFragmentListener {
+public class PrincipalActivity extends Activity implements MenuFragment.MenuFragmentListener {
 
     // Tag para el log
-    private static final String TAG = "MenuActivity";
+    private static final String TAG = "PrincipalActivity";
 
     // Fragment activo en el área de trabajo
     private Fragment fragmentEnArea = null;
@@ -87,7 +86,7 @@ public class MenuActivity extends Activity implements MenuFragment.MenuFragmentL
         super.onCreate(savedInstanceState);
 
         // Establecer layout
-        setContentView(R.layout.activity_menu);
+        setContentView(R.layout.activity_principal);
 
         // Log
         Log.i(TAG, "onCreate");

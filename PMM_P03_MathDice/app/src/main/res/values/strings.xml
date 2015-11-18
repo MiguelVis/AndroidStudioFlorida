@@ -30,4 +30,8 @@
 
     <string name="informacion_no_implementado">Información: No implementado.</string>
 
+    <!-- Mensaje a mostrar cuando se completa la partida -->
+
+    <string name="partida_math_dice">¡MathDice!</string>
+
 </resources>

@@ -1,7 +1,6 @@
 package com.app.floppysoftware.pmm_p03_mathdice;
 
 import android.app.Activity;
-import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
@@ -37,9 +36,9 @@ public class JuegoFragment extends Fragment {
     private TextView textViewResultado;
 
     // Id. de los recursos de las imágenes para los dados
-    private int [] recursoIdDadosTres = new int [] {R.drawable.dado_rojo_1, R.drawable.dado_rojo_2, R.drawable.dado_rojo_3};
-    private int [] recursoIdDadosSeis = new int [] {R.drawable.dado_azul_1, R.drawable.dado_azul_2, R.drawable.dado_azul_3,
-            R.drawable.dado_azul_4, R.drawable.dado_azul_5, R.drawable.dado_azul_6 };
+    private int [] recursoIdDadosTres = new int [] {R.drawable.dado_3_1, R.drawable.dado_3_2, R.drawable.dado_3_3};
+    private int [] recursoIdDadosSeis = new int [] {R.drawable.dado_6_1, R.drawable.dado_6_2, R.drawable.dado_6_3,
+            R.drawable.dado_6_4, R.drawable.dado_6_5, R.drawable.dado_6_6 };
     private int [] recursoIdDodecaedro = new int [] {R.drawable.dode_1, R.drawable.dode_2, R.drawable.dode_3, R.drawable.dode_4,
             R.drawable.dode_5, R.drawable.dode_6, R.drawable.dode_7, R.drawable.dode_8, R.drawable.dode_9,
             R.drawable.dode_10, R.drawable.dode_11, R.drawable.dode_12};
@@ -201,22 +200,22 @@ public class JuegoFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         // Tomar las referencias de los ImageView de los dados (valores del 1 al 3)
-        imageViewDadosTres[0] = (ImageView) getActivity().findViewById(R.id.imageViewDadoRojo1);
-        imageViewDadosTres[1] = (ImageView) getActivity().findViewById(R.id.imageViewDadoRojo2);
+        imageViewDadosTres[0] = (ImageView) getActivity().findViewById(R.id.imageViewDadoTres1);
+        imageViewDadosTres[1] = (ImageView) getActivity().findViewById(R.id.imageViewDadoTres2);
 
         // Fijar el lístener de los dados
         for(int i = 0; i < imageViewDadosTres.length; ++i) {
-            imageViewDadosTres[i].setOnClickListener(onClickDadoRojo);
+            imageViewDadosTres[i].setOnClickListener(onClickDadoTres);
         }
 
         // Tomar las referencias de los ImageView de los dados (valores del 1 al 6)
-        imageViewDadosSeis[0] = (ImageView) getActivity().findViewById(R.id.imageViewDadoAzul1);
-        imageViewDadosSeis[1] = (ImageView) getActivity().findViewById(R.id.imageViewDadoAzul2);
-        imageViewDadosSeis[2] = (ImageView) getActivity().findViewById(R.id.imageViewDadoAzul3);
+        imageViewDadosSeis[0] = (ImageView) getActivity().findViewById(R.id.imageViewDadoSeis1);
+        imageViewDadosSeis[1] = (ImageView) getActivity().findViewById(R.id.imageViewDadoSeis2);
+        imageViewDadosSeis[2] = (ImageView) getActivity().findViewById(R.id.imageViewDadoSeis3);
 
         // Fijar el lístener de los dados
         for(int i = 0; i < imageViewDadosSeis.length; ++i) {
-            imageViewDadosSeis[i].setOnClickListener(onClickDadoAzul);
+            imageViewDadosSeis[i].setOnClickListener(onClickDadoSeis);
         }
 
         // Tomar la referencia del ImageView del dodecaedro
@@ -258,31 +257,25 @@ public class JuegoFragment extends Fragment {
         // Generar nuevos valores para los dados del 1 al 3
         for(int i = 0; i < valorDadosTres.length; ++i) {
 
-            // Generar valor (1 ... 3)
-            int valor = random.nextInt(2) + 1;
-
-            // Tomar nuevo valor
-            valorDadosTres[i] = valor;
+            // Generar valor (1 ... 3) y asignarlo
+            valorDadosTres[i] = random.nextInt(3) + 1; // random.nextInt(3) devuelve un nº de 0 a 2
 
             // Modificar imagen, de acuerdo al valor del dado
-            imageViewDadosTres[i].setImageResource(recursoIdDadosTres[valor - 1]);
+            imageViewDadosTres[i].setImageResource(recursoIdDadosTres[valorDadosTres[i] - 1]);
         }
 
         // Generar nuevos valores para los dados del 1 al 6
         for(int i = 0; i < valorDadosSeis.length; ++i) {
 
-            // Generar valor (1 ... 6)
-            int valor = random.nextInt(5) + 1;
-
             // Tomar nuevo valor
-            valorDadosSeis[i] = valor;
+            valorDadosSeis[i] = random.nextInt(6) + 1; // random.nextInt(6) devuelve un nº de 0 a 5
 
             // Modificar imagen, de acuerdo al valor del dado
-            imageViewDadosSeis[i].setImageResource(recursoIdDadosSeis[valor - 1]);
+            imageViewDadosSeis[i].setImageResource(recursoIdDadosSeis[valorDadosSeis[i] - 1]);
         }
 
         // Generar nuevo valor para el dodecaedro del 1 al 12
-        valorDodecaedro = random.nextInt(11) + 1;
+        valorDodecaedro = random.nextInt(12) + 1; // random.nextInt(12) devuelve un nº de 0 a 11
 
         // Modificar imagen del dodecaedro, de acuerdo a su valor
         imageViewDodecaedro.setImageResource(recursoIdDodecaedro[valorDodecaedro - 1]);
@@ -392,8 +385,10 @@ public class JuegoFragment extends Fragment {
         // Mostrar mensaje si el resultado coincide con el valor del dodecaedro
         if(valorResultado == valorDodecaedro) {
 
-            Toast.makeText(getActivity(), "¡MathDice!", Toast.LENGTH_SHORT).show();  // FIXME
+            Toast.makeText(getActivity(), R.string.partida_math_dice, Toast.LENGTH_SHORT).show();  // FIXME
         }
+
+        // FIXME: La partida debería terminar y comenzar otra.
     }
 
     /**
@@ -467,7 +462,7 @@ public class JuegoFragment extends Fragment {
     /**
      * Lístener para los dados que generan valores del 1 al 3.
      */
-    private View.OnClickListener onClickDadoRojo = new View.OnClickListener() {
+    private View.OnClickListener onClickDadoTres = new View.OnClickListener() {
 
         /**
          * Método llamado al hacer click en el dado.
@@ -505,7 +500,7 @@ public class JuegoFragment extends Fragment {
     /**
      * Lístener para los dados que generan valores del 1 al 6.
      */
-    private View.OnClickListener onClickDadoAzul = new View.OnClickListener() {
+    private View.OnClickListener onClickDadoSeis = new View.OnClickListener() {
 
         /**
          * Método llamado al hacer click en el dado.

@@ -222,7 +222,7 @@ public class SplashActivity extends Activity {
                 cancelarTimer();
 
                 // Intent para ejecutar la otra activity
-                Intent intentMainActivity = new Intent(getApplicationContext(), MenuActivity.class);
+                Intent intentMainActivity = new Intent(getApplicationContext(), PrincipalActivity.class);
 
                 // Comenzar la otra activity
                 startActivity(intentMainActivity);

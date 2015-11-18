@@ -22,51 +22,51 @@
         <!-- Dados rojos del 1 al 3 -->
 
         <ImageView
-            android:id="@+id/imageViewDadoRojo1"
+            android:id="@+id/imageViewDadoTres1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="@dimen/padding_dados"
-            android:src="@drawable/dado_rojo_1"
+            android:src="@drawable/dado_3_1"
             />
 
         <ImageView
-            android:id="@+id/imageViewDadoRojo2"
+            android:id="@+id/imageViewDadoTres2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="@dimen/padding_dados"
-            android:layout_toRightOf="@id/imageViewDadoRojo1"
-            android:src="@drawable/dado_rojo_2"
+            android:layout_toRightOf="@id/imageViewDadoTres1"
+            android:src="@drawable/dado_3_2"
             />
 
         <!-- Dados azules del 1 al 6 -->
 
         <ImageView
-            android:id="@+id/imageViewDadoAzul1"
+            android:id="@+id/imageViewDadoSeis1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="@dimen/padding_dados"
-            android:layout_below="@id/imageViewDadoRojo1"
-            android:src="@drawable/dado_azul_1"
+            android:layout_below="@id/imageViewDadoTres1"
+            android:src="@drawable/dado_6_1"
             />
 
         <ImageView
-            android:id="@+id/imageViewDadoAzul2"
+            android:id="@+id/imageViewDadoSeis2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="@dimen/padding_dados"
-            android:layout_toEndOf="@id/imageViewDadoAzul1"
-            android:layout_alignBottom="@id/imageViewDadoAzul1"
-            android:src="@drawable/dado_azul_2"
+            android:layout_toEndOf="@id/imageViewDadoSeis1"
+            android:layout_alignBottom="@id/imageViewDadoSeis1"
+            android:src="@drawable/dado_6_2"
             />
 
         <ImageView
-            android:id="@+id/imageViewDadoAzul3"
+            android:id="@+id/imageViewDadoSeis3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="@dimen/padding_dados"
-            android:layout_toEndOf="@id/imageViewDadoAzul2"
-            android:layout_alignBottom="@id/imageViewDadoAzul1"
-            android:src="@drawable/dado_azul_3"
+            android:layout_toEndOf="@id/imageViewDadoSeis2"
+            android:layout_alignBottom="@id/imageViewDadoSeis1"
+            android:src="@drawable/dado_6_3"
             />
 
         <!-- Dado dodecaedro (del 1 al 12) -->
@@ -76,7 +76,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="@dimen/padding_dados"
-            android:layout_below="@id/imageViewDadoAzul1"
+            android:layout_below="@id/imageViewDadoSeis1"
             android:src="@drawable/dode_1"
             />
 
