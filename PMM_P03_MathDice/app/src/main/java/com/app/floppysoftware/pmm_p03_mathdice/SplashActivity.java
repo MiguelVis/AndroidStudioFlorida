@@ -13,7 +13,7 @@ import java.util.TimerTask;
  * Implementación de una Splash Screen.
  *
  * Ésta será la activity de inicio de la aplicación, que dará paso
- * a la activity del menú principal.
+ * a la activity de solicitud del perfil.
  *
  * Durante 3 segundos, se mostrará una barra de progreso, que indicará
  * el tiempo transcurrido desde el inicio de la aplicación / tiempo
@@ -24,8 +24,8 @@ import java.util.TimerTask;
  * transcurrido. Es decir, que no vuelva a comenzar a contar desde cero.
  *
  * @author  Miguel I. García López
- * @version 1.1
- * @since   13 Oct 2015
+ * @version 1.2
+ * @since   25 Nov 2015
  */
 public class SplashActivity extends Activity {
 
@@ -222,10 +222,10 @@ public class SplashActivity extends Activity {
                 cancelarTimer();
 
                 // Intent para ejecutar la otra activity
-                Intent intentMainActivity = new Intent(getApplicationContext(), PrincipalActivity.class);
+                Intent intentPerfilActivity = new Intent(getApplicationContext(), PerfilActivity.class);
 
                 // Comenzar la otra activity
-                startActivity(intentMainActivity);
+                startActivity(intentPerfilActivity);
 
                 // Finalizar esta activity, de forma que no se pueda volver a ella
                 finish();

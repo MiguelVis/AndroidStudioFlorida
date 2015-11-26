@@ -18,9 +18,11 @@
 
     <string name="alumno">Alumno: Miguel I. García López</string>
 
-    <!-- Perfil: No implementado -->
+    <!-- Perfil -->
 
-    <string name="perfil_no_implementado">Perfil: No implementado.</string>
+    <string name="perfil_nombre">Nombre</string>
+    <string name="perfil_edad">Edad</string>
+    <string name="perfil_jugar">Jugar</string>
 
     <!-- Instrucciones: No implementado -->
 

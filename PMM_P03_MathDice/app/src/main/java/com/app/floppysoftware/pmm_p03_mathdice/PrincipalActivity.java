@@ -3,20 +3,28 @@ package com.app.floppysoftware.pmm_p03_mathdice;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 /**
  * Clase que implementa la pantalla principal mediante fragments.
  *
  * @author  Miguel I. García López
- * @version 1.3
- * @since   10 Nov 2015
+ * @version 1.4
+ * @since   25 Nov 2015
  */
-public class PrincipalActivity extends Activity implements MenuFragment.MenuFragmentListener {
+public class PrincipalActivity extends Activity implements MenuFragment.MenuFragmentListener, PerfilFragment.PerfilFragmentListener {
 
     // Tag para el log
     private static final String TAG = "PrincipalActivity";
+
+    // Opciones del menú
+    private static final int OPCION_PERFIL = 0;
+    private static final int OPCION_JUEGO = 1;
+    private static final int OPCION_INSTRUCCIONES = 2;
+    private static final int OPCION_INFORMACION = 3;
 
     // Fragment activo en el área de trabajo
     private Fragment fragmentEnArea = null;
@@ -26,6 +34,10 @@ public class PrincipalActivity extends Activity implements MenuFragment.MenuFrag
     JuegoFragment juegoFragment = null;
     InstruccionesFragment instruccionesFragment = null;
     InformacionFragment informacionFragment = null;
+
+    // Datos del perfil
+    String perfilNombre;  // Nombre
+    int perfilEdad;       // Edad
 
     /**
      * Este método será llamado a través del fragment del menú,
@@ -40,13 +52,11 @@ public class PrincipalActivity extends Activity implements MenuFragment.MenuFrag
         // Cambiar el fragment del área de trabajo,
         // según la opción seleccionada
         switch(position) {
-            case 0 : // PERFIL
-                if(perfilFragment == null) {
-                    perfilFragment = new PerfilFragment();
-                }
-                fijaFragmentArea(perfilFragment);
+            case OPCION_PERFIL : // PERFIL
+                // Cambiar el fragment
+                fijarPerfil();
                 break;
-            case 1 : // JUEGO
+            case OPCION_JUEGO : // JUEGO
                 // Crear fragment si no está creado ya
                 if(juegoFragment == null) {
                     juegoFragment = new JuegoFragment();
@@ -55,21 +65,44 @@ public class PrincipalActivity extends Activity implements MenuFragment.MenuFrag
                 // Cambiar el fragment
                 fijaFragmentArea(juegoFragment);
                 break;
-            case 2 : // INSTRUCCIONES
+            case OPCION_INSTRUCCIONES : // INSTRUCCIONES
+                // Crear fragment si no está creado ya
                 if(instruccionesFragment == null) {
                     instruccionesFragment = new InstruccionesFragment();
                 }
+
+                // Cambiar el fragment
                 fijaFragmentArea(instruccionesFragment);
                 break;
-            case 3 : // INFORMACIÓN
+            case OPCION_INFORMACION : // INFORMACIÓN
+                // Crear fragment si no está creado ya
                 if(informacionFragment == null) {
                     informacionFragment = new InformacionFragment();
                 }
+
+                // Cambiar el fragment
                 fijaFragmentArea(informacionFragment);
                 break;
             default :
                 break;
         }
+    }
+
+    /**
+     * Este método será llamado desde el fragment de solicitud del perfil,
+     * con los datos introducidos.
+     *
+     * @param nombre  nombre del perfil
+     * @param edad    edad del perfil
+     */
+    public void onPerfilSelected(String nombre, int edad) {
+
+        // Actualización de los datos del perfil
+        perfilNombre = nombre;  // Nombre
+        perfilEdad = edad;      // Edad
+
+        // Comprobación visual
+        Toast.makeText(this, "Perfil: '" + perfilNombre + "' de " + perfilEdad + " años de edad", Toast.LENGTH_SHORT).show();
     }
 
     /**
@@ -91,6 +124,22 @@ public class PrincipalActivity extends Activity implements MenuFragment.MenuFrag
         // Log
         Log.i(TAG, "onCreate");
 
+        // Tomar los datos del perfil, enviados por la activity que llama a ésta
+        if(savedInstanceState == null) {
+
+            // Tomar extras
+            Bundle extras = getIntent().getExtras();
+
+            // Tomar nombre del perfil
+            perfilNombre = extras.getString(PerfilActivity.ARG_PERFIL_NOMBRE);
+
+            // Tomar edad del perfil
+            perfilEdad = extras.getInt(PerfilActivity.ARG_PERFIL_EDAD);
+
+            // Comprobación visual
+            Toast.makeText(this, "Perfil: '" + perfilNombre + "' de " + perfilEdad + " años de edad", Toast.LENGTH_SHORT).show();
+        }
+
         // Comprobar que la activity está utilizando el layout
         // con el fragment del área de trabajo.
         if (findViewById(R.id.fragmentArea) != null) {
@@ -101,19 +150,11 @@ public class PrincipalActivity extends Activity implements MenuFragment.MenuFrag
                 return;
             }
 
-            // Create a new Fragment to be placed in the activity layout
-            //InicialFragment firstFragment = new InicialFragment();
-
-            // In case this activity was started with special instructions from an
-            // Intent, pass the Intent's extras to the fragment as arguments
-            //firstFragment.setArguments(getIntent().getExtras());
-
-            // Add the fragment to the 'fragment_container' FrameLayout
-            //getFragmentManager().beginTransaction()
-                    //.add(R.id.fragmentArea, firstFragment).commit();
-
             // Fijar el fragment inicial
-            fijaFragmentArea(InicialFragment.newInstance(R.drawable.logo_floppy_software, R.string.alumno));
+            // fijaFragmentArea(InicialFragment.newInstance(R.drawable.logo_floppy_software, R.string.alumno));
+
+            // Fijar el fragment inicial (perfil)
+            fijarPerfil();
         }
     }
 
@@ -144,5 +185,18 @@ public class PrincipalActivity extends Activity implements MenuFragment.MenuFrag
             // Recordar el fragment actualmente activo
             fragmentEnArea = f;
         }
+    }
+
+    /**
+     * Establece el fragment del perfil en el área de trabajo.
+     */
+    private void fijarPerfil() {
+        // Crear fragment si no está creado ya
+        if(perfilFragment == null) {
+            perfilFragment = PerfilFragment.newInstance(perfilNombre, perfilEdad);
+        }
+
+        // Cambiar el fragment
+        fijaFragmentArea(perfilFragment);
     }
 }
