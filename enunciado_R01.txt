@@ -1,0 +1,52 @@
+R01 - Opcional, juego RAVA
+==========================
+
+https://docs.google.com/document/d/1M8_sc3ygEWxjR4lwLeI_0WdeKHXKa0A0bAg8OeSwpsA/edit
+
+Descripción del reto
+--------------------
+
+Generar una aplicación que implemente el siguiente juego:
+
+	https://vimeo.com/148452456
+
+Utilizaremos Fragments para implementar el juego.
+ 
+Reto resuelto
+-------------
+
+En el siguiente vídeo podréis visualizar el paso a paso de la resolución:
+
+	https://vimeo.com/148425185
+
+	OJO NO HAY UNA ÚNICA SOLUCIÓN.
+
+Código fuente
+-------------
+
+https://github.com/pacogomezarnal/DAM_Java/tree/master/CumplePersona
+
+Mis anotaciones
+---------------
+
+R01 RAVA = rojo amarillo verde azul
+
+Splash Activity
+
+Una activity con:
+
+	fragment estático: letras
+	fragment estático: 4 botones con los colores + callbacks
+	fragment estático: puntuacion
+
+El jugador ha de pulsar el botón correspondiente al color.
+
+Si acierta, se le suman 5 puntos.
+
+Si no aciertan, no pasa nada.
+
+Después de pulsar (acierto o no), cambian los colores de los botones y el color a clickar aleatoriamente.
+ 
+
+
+
