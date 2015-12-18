@@ -1,0 +1,29 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="@color/fondo"
+    tools:context=".MainActivity">
+
+    <!-- Fragment estático que contiene el menú -->
+
+    <fragment
+        android:name="com.app.floppysoftware.pmm_p04_mathdice.MenuFragment"
+        android:id="@+id/fragmentMenu"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        tools:layout="@layout/fragment_menu"
+        />
+
+    <!-- Fragment dinámico que contiene el área de juego, perfil, etc. -->
+
+    <FrameLayout
+        android:id="@+id/fragmentArea"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        />
+
+</LinearLayout>

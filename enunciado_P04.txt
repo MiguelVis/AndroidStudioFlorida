@@ -1,0 +1,41 @@
+P04 - MathDice Multiples Devices
+
+Descripción del proyecto
+ 
+Por último en el proyecto MathDice, convertiremos el último código realizado en un proyecto soportado para dispositivos “large” y “xlarge”.
+
+NO EXISTE UNA ÚNICA SOLUCIÓN
+
+
+Pasos a realizar
+ 
+	1. Utilizaremos el tercer proyecto.
+
+	2. Generaremos múltiples layouts para dispositivos “large” y “xlarge”
+	   en el Activity Principal del juego:
+
+		- Para el caso de xlarge, dejaremos el proyecto tal y como estaba.
+
+		- Para el caso de large, generaremos al menos un nuevo Activity que
+		  será llamado cuando se aprete el juego. Este nuevo Activity cargará
+		  el Fragment ya realizado.
+
+
+Cómo se sube
+
+	Enlace a proyecto en github
+
+
+Vídeo explicativo
+ 
+
+Cómo se evalúa
+ 
+	https://docs.google.com/document/d/1Z70znoJREYGKPXkGwhiZinvzaNUmQicrtpS47IfxbvY/edit
+ 
+
+
+ 
+
+
+
