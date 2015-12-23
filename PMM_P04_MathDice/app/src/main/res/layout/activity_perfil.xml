@@ -6,14 +6,14 @@
     android:background="@color/fondo"
     tools:context="com.app.floppysoftware.pmm_p04_mathdice.PerfilActivity">
 
-    <!-- Fragment estático que contiene el fragment del perfil -->
+    <!-- Layout para dispositivos que no sean tablets -->
 
-    <fragment
-        android:name="com.app.floppysoftware.pmm_p04_mathdice.PerfilFragment"
+    <!-- Fragment que contiene el fragment del perfil -->
+
+    <FrameLayout
         android:id="@+id/fragmentPerfil"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout="@layout/fragment_perfil"
         />
 
 </LinearLayout>

@@ -8,7 +8,7 @@ import android.view.MenuItem;
 
 /**
  * Clase que implementa la activity de instrucciones, para dispositivos
- * con pantallas de tamaño normal (no tabletas).
+ * que no sean tablets.
  *
  * @author  Miguel I. García López
  * @version 1.0

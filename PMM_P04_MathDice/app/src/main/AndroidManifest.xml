@@ -40,13 +40,6 @@
             </intent-filter>
         </activity>
 
-        <!-- Activity de solicitud del perfil. -->
-
-        <activity
-            android:name=".PerfilActivity"
-            android:label="@string/app_name" >
-        </activity>
-
         <!--
              Activity del menú principal y área de juego, ocupa toda
              la pantalla del dispositivo, no muestra título ni menú, de ahí
@@ -58,18 +51,35 @@
             android:label="@string/app_name"
             android:theme="@style/AppTheme.Menu" >
         </activity>
+
+        <!-- Activity de solicitud del perfil. -->
+
+        <activity
+            android:name=".PerfilActivity"
+            android:label="@string/app_name" >
+        </activity>
+
+        <!-- Activity de juego -->
+
         <activity
             android:name=".JuegoActivity"
             android:label="@string/app_name" >
         </activity>
+
+        <!-- Activity de información -->
+
         <activity
             android:name=".InformacionActivity"
             android:label="@string/app_name" >
         </activity>
+
+        <!-- Activity de instrucciones -->
+
         <activity
             android:name=".InstruccionesActivity"
             android:label="@string/app_name" >
         </activity>
+
     </application>
 
 </manifest>

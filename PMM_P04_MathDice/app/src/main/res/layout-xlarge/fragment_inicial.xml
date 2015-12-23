@@ -6,6 +6,8 @@
     android:gravity="center"
     tools:context="com.app.floppysoftware.pmm_p04_mathdice.InicialFragment">
 
+    <!-- Layout para dispositivos de tipo tablet -->
+
     <!-- Logo -->
 
     <ImageView

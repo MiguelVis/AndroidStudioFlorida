@@ -5,6 +5,8 @@
     android:background="@color/fondo"
     tools:context="com.app.floppysoftware.pmm_p04_mathdice.InstruccionesActivity">
 
+    <!-- Layout para dispositivos que no sean tablets -->
+
     <!-- Fragment estático que contiene el fragment de instrucciones -->
 
     <fragment

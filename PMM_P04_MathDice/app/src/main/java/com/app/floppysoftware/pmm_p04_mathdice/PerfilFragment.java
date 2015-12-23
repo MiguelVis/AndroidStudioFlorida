@@ -140,8 +140,7 @@ public class PerfilFragment extends Fragment {
         // Tomar la referencia del campo de entrada de la edad
         editTextEdad = (EditText) getActivity().findViewById(R.id.editTextEdad);
 
-        // Tomar valores iniciales del perfil, si los hay (cuando se ejecuta
-        // inicialmente después de la Splash Screen, no los hay).
+        // Tomar valores iniciales del perfil, si los hay
         Bundle bundle = getArguments();
 
         if(bundle != null) {

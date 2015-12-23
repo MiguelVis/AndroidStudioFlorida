@@ -9,6 +9,8 @@
     android:orientation="vertical"
     tools:context="com.app.floppysoftware.pmm_p04_mathdice.JuegoFragment">
 
+    <!-- Layout para dispositivos que no sean tablets -->
+
     <!-- Layout para los dados y botones -->
 
     <!-- Nota: Las imágenes de los dados y los textos se han puesto únicamente para ver

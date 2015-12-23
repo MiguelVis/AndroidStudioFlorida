@@ -24,21 +24,13 @@
     <string name="perfil_edad">Edad</string>
     <string name="perfil_jugar">Jugar</string>
 
-    <!-- Instrucciones: No implementado -->
+    <!-- No implementado -->
 
-    <string name="instrucciones_no_implementado">Instrucciones: No implementado.</string>
-
-    <!-- Información: No implementado -->
-
-    <string name="informacion_no_implementado">Información: No implementado.</string>
+    <string name="no_implementado">No implementado.</string>
 
     <!-- Mensaje a mostrar cuando se completa la partida -->
 
     <string name="partida_math_dice">¡MathDice!</string>
     <string name="title_activity_juego">JuegoActivity</string>
-
-    <string name="hello_world">Hello world!</string>
-    <string name="title_activity_informacion">InformacionActivity</string>
-    <string name="title_activity_instrucciones">InstruccionesActivity</string>
 
 </resources>

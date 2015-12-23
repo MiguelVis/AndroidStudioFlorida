@@ -27,21 +27,24 @@ public class PrincipalActivity extends Activity implements MenuFragment.MenuFrag
     private static final int OPCION_INSTRUCCIONES = 2;
     private static final int OPCION_INFORMACION = 3;
 
+    // Request Codes para Intents
+    private static final int REQUEST_CODE_PERFIL = 1;  // Perfil
+
     // Fragment activo en el área de trabajo
     private Fragment fragmentEnArea = null;
 
     // Fragments para las opciones
-    PerfilFragment perfilFragment = null;
-    JuegoFragment juegoFragment = null;
-    InstruccionesFragment instruccionesFragment = null;
-    InformacionFragment informacionFragment = null;
+    private PerfilFragment perfilFragment = null;
+    private JuegoFragment juegoFragment = null;
+    private InstruccionesFragment instruccionesFragment = null;
+    private InformacionFragment informacionFragment = null;
 
     // Datos del perfil
-    String perfilNombre;  // Nombre
-    int perfilEdad;       // Edad
+    private String perfilNombre = "Elvis";  // Nombre
+    private int perfilEdad = 43;            // Edad
 
     // Tamaño de pantalla del dispositivo
-    boolean pantallaGrande;
+    private boolean pantallaGrande = false;
 
     /**
      * Este método será llamado a través del fragment del menú,
@@ -51,7 +54,7 @@ public class PrincipalActivity extends Activity implements MenuFragment.MenuFrag
      */
     public void onOptionSelected(int position) {
 
-        //Toast.makeText(this,"Opción: " + position,Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Opción: " + position, Toast.LENGTH_SHORT).show();
 
         // Cambiar el fragment del área de trabajo,
         // según la opción seleccionada
@@ -59,23 +62,33 @@ public class PrincipalActivity extends Activity implements MenuFragment.MenuFrag
             case OPCION_PERFIL : // PERFIL
 
                 // Ejecutar una activity en el caso de pantallas normales,
-                // o cambiar el fragment en el caso de pantallas grandes.
+                // o cambiar el fragment en el caso de tablets.
                 if(pantallaGrande) {
+
+                    // Crear fragment si no está creado ya
+                    if(perfilFragment == null) {
+                        perfilFragment = PerfilFragment.newInstance(perfilNombre, perfilEdad);
+                    }
+
                     // Cambiar el fragment
-                    fijarPerfil();
+                    fijaFragmentArea(perfilFragment);
                 } else {
 
                     // Crear intent
                     Intent intent = new Intent(this, PerfilActivity.class);
 
-                    // Ejecutar activity
-                    startActivity(intent);
+                    // Enviarle los datos actuales del perfil
+                    intent.putExtra(PerfilActivity.ARG_PERFIL_NOMBRE, perfilNombre);  // Nombre
+                    intent.putExtra(PerfilActivity.ARG_PERFIL_EDAD, perfilEdad);      // Edad
+
+                    // Ejecutar activity que devolverá el perfil introducido
+                    startActivityForResult(intent, REQUEST_CODE_PERFIL);
                 }
                 break;
             case OPCION_JUEGO : // JUEGO
 
                 // Ejecutar una activity en el caso de pantallas normales,
-                // o cambiar el fragment en el caso de pantallas grandes.
+                // o cambiar el fragment en el caso de tablets.
                 if(pantallaGrande) {
 
                     // Crear fragment si no está creado ya
@@ -98,7 +111,7 @@ public class PrincipalActivity extends Activity implements MenuFragment.MenuFrag
             case OPCION_INSTRUCCIONES : // INSTRUCCIONES
 
                 // Ejecutar una activity en el caso de pantallas normales,
-                // o cambiar el fragment en el caso de pantallas grandes.
+                // o cambiar el fragment en el caso de tablets.
                 if(pantallaGrande) {
 
                     // Crear fragment si no está creado ya
@@ -120,8 +133,9 @@ public class PrincipalActivity extends Activity implements MenuFragment.MenuFrag
             case OPCION_INFORMACION : // INFORMACIÓN
 
                 // Ejecutar una activity en el caso de pantallas normales,
-                // o cambiar el fragment en el caso de pantallas grandes.
+                // o cambiar el fragment en el caso de tablets.
                 if(pantallaGrande) {
+
                     // Crear fragment si no está creado ya
                     if (informacionFragment == null) {
                         informacionFragment = new InformacionFragment();
@@ -145,7 +159,7 @@ public class PrincipalActivity extends Activity implements MenuFragment.MenuFrag
 
     /**
      * Este método será llamado desde el fragment de solicitud del perfil,
-     * con los datos introducidos.
+     * con los datos introducidos por el usuario.
      *
      * @param nombre  nombre del perfil
      * @param edad    edad del perfil
@@ -158,6 +172,26 @@ public class PrincipalActivity extends Activity implements MenuFragment.MenuFrag
 
         // Comprobación visual
         Toast.makeText(this, "Perfil: '" + perfilNombre + "' de " + perfilEdad + " años de edad", Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * Método llamado cuando una activity ejecutada
+     * mediante startActivityForResult() finaliza.
+     *
+     * @param requestCode  Código que identifica la petición
+     * @param resultCode   Código del resultado
+     * @param data         Intent
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        // Comprobar si es la activity del perfil
+        if (requestCode == REQUEST_CODE_PERFIL && resultCode == RESULT_OK && data != null) {
+
+            // Tomar datos
+            perfilNombre = data.getStringExtra(PerfilActivity.ARG_PERFIL_NOMBRE);
+            perfilEdad = data.getIntExtra(PerfilActivity.ARG_PERFIL_EDAD, 0);
+        }
     }
 
     /**
@@ -179,48 +213,31 @@ public class PrincipalActivity extends Activity implements MenuFragment.MenuFrag
         // Log
         Log.i(TAG, "onCreate");
 
-        // Tomar los datos del perfil, enviados por la activity que llama a ésta
-        if(savedInstanceState == null) {
-
-            // Tomar extras
-            //Bundle extras = getIntent().getExtras();
-
-            // Tomar nombre del perfil
-            //perfilNombre = extras.getString(PerfilActivity.ARG_PERFIL_NOMBRE);
-
-            // Tomar edad del perfil
-            //perfilEdad = extras.getInt(PerfilActivity.ARG_PERFIL_EDAD);
-
-            // Comprobación visual
-            //Toast.makeText(this, "Perfil: '" + perfilNombre + "' de " + perfilEdad + " años de edad", Toast.LENGTH_SHORT).show();
-        }
-
-        // Comprobar que la activity está utilizando el layout
-        // con el fragment del área de trabajo.
+        // Comprobar si la activity está utilizando el layout
+        // para tablets.
         if (findViewById(R.id.fragmentArea) != null) {
 
-            // La pantalla del dispositivo es grande
+            // El dispositivo es una tablet
             pantallaGrande = true;
 
-            // Cambiar orientación
+            // Orientación apaisada
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
             // Si se está restaurando el estado, no hacer nada con
             // el fragment (ya está presente).
-            if (savedInstanceState != null) {
-                return;
+            if (savedInstanceState == null) {
+
+                // Fijar el fragment inicial
+                fijaFragmentArea(InicialFragment.newInstance(R.drawable.logo_floppy_software, R.string.alumno));
             }
-
-            // Fijar el fragment inicial
-            fijaFragmentArea(InicialFragment.newInstance(R.drawable.logo_floppy_software, R.string.alumno));
-
-            // Fijar el fragment inicial (perfil)
-            //fijarPerfil();
 
         } else {
 
-            // La pantalla del dispositivo es pequeña
+            // El dispositivo no es una tablet
             pantallaGrande = false;
+
+            // Orientación vertical
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
     }
 
@@ -251,18 +268,5 @@ public class PrincipalActivity extends Activity implements MenuFragment.MenuFrag
             // Recordar el fragment actualmente activo
             fragmentEnArea = f;
         }
-    }
-
-    /**
-     * Establece el fragment del perfil en el área de trabajo.
-     */
-    private void fijarPerfil() {
-        // Crear fragment si no está creado ya
-        if(perfilFragment == null) {
-            perfilFragment = PerfilFragment.newInstance(perfilNombre, perfilEdad);
-        }
-
-        // Cambiar el fragment
-        fijaFragmentArea(perfilFragment);
     }
 }

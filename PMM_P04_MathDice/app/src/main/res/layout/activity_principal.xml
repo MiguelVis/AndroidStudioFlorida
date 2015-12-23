@@ -6,6 +6,8 @@
     android:background="@color/fondo"
     tools:context=".MainActivity">
 
+    <!-- Layout para dispositivos que no sean tablets -->
+
     <!-- Fragment estático que contiene el menú -->
 
     <fragment
