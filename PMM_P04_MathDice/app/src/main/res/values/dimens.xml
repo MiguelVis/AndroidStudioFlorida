@@ -6,6 +6,6 @@
 
     <!-- Padding para los botones y dados del área de juego -->
 
-    <dimen name="padding_dados">8dp</dimen>
+    <dimen name="padding_dados">6dp</dimen>
 
 </resources>
