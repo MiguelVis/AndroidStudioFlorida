@@ -124,7 +124,7 @@
             android:text="oper"
             android:textSize="64sp"
             android:textStyle="bold"
-            android:typeface="serif"
+            android:typeface="monospace"
             android:textColor="@color/white"
             />
 
@@ -136,7 +136,7 @@
             android:text="rt"
             android:textSize="64sp"
             android:textStyle="bold"
-            android:typeface="serif"
+            android:typeface="monospace"
             android:textColor="@color/white"
             />
 
