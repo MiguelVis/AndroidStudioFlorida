@@ -1,0 +1,49 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.app.floppysoftware.pmm_p05_mathdice.MenuFragment">
+
+    <!-- Nota: En la pestaña Design de Android Studio, éste layout se renderiza
+         incorrectamente, tomando visualmente el ListView toda la pantalla
+         del dispositivo.
+         Tanto en el emulador, como en el dispositivo real, se visualiza
+         correctamente.
+
+         El efecto buscado es que el ListView se visualice en la parte inferior
+         de la pantalla, mostrando todas las opciones del menú, mientras que la imagen de
+         cabecera, ha de estar situada en la parte superior, absorbiendo el espacio
+         libre restante en vertical.
+
+         Se ha eliminado el padding del layout, y creado un tema específico para este layout a
+         semejanza de la SplashScreen.
+         -->
+
+    <!-- Imagen de cabecera -->
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageViewBanner"
+            android:src="@drawable/cabecera_menu"
+            />
+
+    </LinearLayout>
+
+    <!-- Menú de opciones -->
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/listViewMenu"
+        />
+
+</LinearLayout>

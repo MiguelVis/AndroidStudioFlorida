@@ -1,0 +1,21 @@
+P05 - MathDice con música de fondo
+
+Descripción del proyecto
+ 
+A la parte del juego le vamos a añadir música de fondo, para que mientras juguemos, estemos escuchando una música. Tenéis algunos repositorios de música gratuita, uno de ellos vimeo (https://vimeo.com/musicstore), youtube music store (https://www.youtube.com/audiolibrary/music) o SoundCloud (https://soundcloud.com/)
+
+NO EXISTE UNA ÚNICA SOLUCIÓN
+
+Pasos a realizar
+ 
+1. Utilizaremos el cuarto proyecto
+
+2. En el Fragment del juego incluiremos música con SoundPool o MediaPlayer.
+
+Cómo se sube
+
+Enlace a proyecto en github
+
+Cómo se evalúa
+ 
+https://docs.google.com/document/d/1Z70znoJREYGKPXkGwhiZinvzaNUmQicrtpS47IfxbvY/edit

@@ -27,6 +27,11 @@ P04
 
 Proyecto 04: Juego MathDice, múltiples dispositivos.
 
+P04
+---
+
+Proyecto 05: Juego MathDice, con música de fondo.
+
 R01
 ---
 

@@ -1,0 +1,66 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/fondo"
+    android:gravity="center"
+    tools:context="com.app.floppysoftware.pmm_p05_mathdice.PerfilFragment">
+
+    <!-- Nombre -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/perfil_nombre"
+        android:textColor="@color/white"
+        android:textSize="32sp"
+        />
+
+    <!-- Introducción del nombre -->
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="15"
+        android:id="@+id/editTextNombre"
+        android:layout_gravity="center_horizontal"
+        />
+
+    <!-- Edad -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:text="@string/perfil_edad"
+        android:textColor="@color/white"
+        android:textSize="32sp"
+        />
+
+    <!-- Introducción de la edad (número) -->
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="15"
+        android:id="@+id/editTextEdad"
+        android:layout_gravity="center_horizontal"
+        />
+
+    <!-- Botón para finalizar la edición -->
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/perfil_jugar"
+        android:id="@+id/buttonJugar"
+        android:layout_gravity="center_horizontal"
+        />
+
+</LinearLayout>

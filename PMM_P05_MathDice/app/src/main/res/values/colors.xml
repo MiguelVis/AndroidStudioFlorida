@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Color de fondo de la aplicación -->
+
+    <color name="fondo">#009688</color>
+
+    <!-- Varios colores -->
+
+    <color name="white">#FFFFFF</color>
+
+</resources>

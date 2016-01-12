@@ -1,0 +1,19 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="@color/fondo"
+    tools:context="com.app.floppysoftware.pmm_p05_mathdice.PerfilActivity">
+
+    <!-- Layout para dispositivos que no sean tablets -->
+
+    <!-- Fragment que contiene el fragment del perfil -->
+
+    <FrameLayout
+        android:id="@+id/fragmentPerfil"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+</LinearLayout>
