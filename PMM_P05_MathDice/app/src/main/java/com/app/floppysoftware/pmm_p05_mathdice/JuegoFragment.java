@@ -1,9 +1,9 @@
 package com.app.floppysoftware.pmm_p05_mathdice;
 
 import android.app.Activity;
+import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.media.SoundPool;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.util.Log;
@@ -22,7 +22,7 @@ import java.util.Random;
  *
  * @author  Miguel I. García López
  * @version 1.1
- * @since   12 Jan 2016
+ * @since   14 Jan 2016
  */
 public class JuegoFragment extends Fragment {
 
@@ -77,8 +77,11 @@ public class JuegoFragment extends Fragment {
     // Flag que indica si se ha mostrado el nuevo resultado acumulado
     private Boolean flagResultadoVisto;
 
-    // Gestión de sonidos con MediaPlayer
-    private MediaPlayer mediaPlayer;    // MediaPlayer para gestión de sonidos
+    // Gestión de sonidos
+    private AudioManager audioManager;      // AudioManager para gestion de sonidos
+    private MediaPlayer mediaPlayer;        // MediaPlayer para gestión de sonidos
+    private boolean quieroSonido = true;    // True si el usuario quiere sonido
+    private boolean puedoSonar;             // True si podemos hacer sonar la música
 
     /* No implementado *****************************
     // Lístener para interactuar con la activity
@@ -143,6 +146,9 @@ public class JuegoFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
         **************************************************/
+
+        // Log
+        Log.d(LOG_TAG, "onCreate()");
     }
 
     /**
@@ -156,6 +162,9 @@ public class JuegoFragment extends Fragment {
      */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        // Log
+        Log.d(LOG_TAG, "onCreateView()");
 
         // Inflar y devolver el layout del fragment
         return  inflater.inflate(R.layout.fragment_juego, container, false);
@@ -181,6 +190,9 @@ public class JuegoFragment extends Fragment {
                     + " must implement OnFragmentInteractionListener");
         }
         *************************************************************************/
+
+        // Log
+        Log.d(LOG_TAG, "onAttach()");
     }
 
     /**
@@ -196,6 +208,9 @@ public class JuegoFragment extends Fragment {
         // Invalidar el lístener
         mListener = null;
         *************************/
+
+        // Log
+        Log.d(LOG_TAG, "onDetach()");
     }
 
     /**
@@ -257,6 +272,25 @@ public class JuegoFragment extends Fragment {
 
         // Mostrar los cambios
         mostrarOperacion();
+
+        // Log
+        Log.d(LOG_TAG, "onActivityCreated()");
+    }
+
+    /**
+     * Método llamado tras onActivityCreated(), y tras onStop() > onRestart().
+     */
+    @Override
+    public void onStart() {
+
+        // Llamar a la superclase
+        super.onStart();
+
+        // Inicializar gestión del sonido
+        holaSonido();
+
+        // Log
+        Log.d(LOG_TAG, "onStart()");
     }
 
     /**
@@ -271,12 +305,7 @@ public class JuegoFragment extends Fragment {
         // Log
         Log.d(LOG_TAG, "onResume()");
 
-        // Inicializar gestión del sonido,
-        // si no está inicializado ya.
-        holaSonido();
-
-        // Reanudar sonidos si fueron pausados,
-        // o activarlos por 1ª vez.
+        // Reanudar sonido
         reanudarSonido();
     }
 
@@ -292,7 +321,7 @@ public class JuegoFragment extends Fragment {
         // Log
         Log.d(LOG_TAG, "onPause()");
 
-        // Pausar sonidos
+        // Pausar sonido
         pausarSonido();
     }
 
@@ -667,15 +696,60 @@ public class JuegoFragment extends Fragment {
      */
     private void holaSonido() {
 
-        // Si ya está inicializado, no hacer nada
-        if(mediaPlayer == null) {
-
-            // Crear MediaPlayer
-            mediaPlayer = MediaPlayer.create(getActivity(), R.raw.fondo_juego);
-
-            // Fijar looping, para que suene ininterrumpidamente
-            mediaPlayer.setLooping(true);
+        // No hacer nada, si el usuario no quiere sonido
+        if(!quieroSonido) {
+            return;
         }
+
+        // Por defecto, no podemos utilizar el sonido
+        puedoSonar = false;
+
+        // Capturar servicio de audio
+        audioManager = (AudioManager) getActivity().getSystemService(Context.AUDIO_SERVICE);
+
+        // Activar control del volumen mediante las teclas del dispositivo
+        getActivity().setVolumeControlStream(AudioManager.STREAM_MUSIC);
+
+        // Crear MediaPlayer
+        mediaPlayer = MediaPlayer.create(getActivity(), R.raw.fondo_juego);
+
+        // Abortar, si hubo fracaso
+        if(mediaPlayer == null) {
+            return;
+        }
+
+        // Fijar looping, para que suene ininterrumpidamente
+        mediaPlayer.setLooping(true);
+
+        // Fijar lístener de MediaPlayer Ready
+        mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+
+            /**
+             * Método llamado cuando MediaPlayer esté listo para hacer
+             * sonar la música.
+             *
+             * @param mp  MediaPlayer
+             */
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+
+                // Log
+                Log.d(LOG_TAG, "MediaPlayer READY");
+
+                // Solicitar foco de audio
+                int result = audioManager.requestAudioFocus(audioFocusChangeListener,
+                        AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN);
+
+                // Fijar resultado
+                puedoSonar = (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED);
+
+                // Log
+                Log.d(LOG_TAG, "AudioFocus = " + puedoSonar);
+
+                // Comenzar música
+                reanudarSonido();
+            }
+        });
     }
 
     /**
@@ -684,13 +758,34 @@ public class JuegoFragment extends Fragment {
      */
     private void adiosSonido() {
 
-        // Si no está inicializado, no hacer nada
+        // No hacer nada, si el usuario no quiere sonido
+        if(!quieroSonido) {
+            return;
+        }
+
+        // MediaPlayer. No hacer nada, si no fue inicializado
         if(mediaPlayer != null) {
 
             mediaPlayer.stop();         // Parar la música
             mediaPlayer.release();      // Liberar recursos
             mediaPlayer = null;         // Inhabilitar MediaPlayer
         }
+
+        // AudioPlayer. No hacer nada, si no fue inicializado.
+        if(audioManager != null) {
+
+            // Abandonar el foco de audio
+            audioManager.abandonAudioFocus(audioFocusChangeListener);
+
+            // Inhabilitar AudioManager
+            audioManager = null;
+        }
+
+        // Liberar el teclado del dispositivo del control de volumen
+        getActivity().setVolumeControlStream(AudioManager.USE_DEFAULT_STREAM_TYPE);
+
+        // Inhabilitar sonido
+        puedoSonar = false;
     }
 
     /**
@@ -698,10 +793,15 @@ public class JuegoFragment extends Fragment {
      */
     private void pausarSonido() {
 
-        // Si no está inicializado, no hacer nada
-        if(mediaPlayer != null) {
+        // No hacer nada, si el usuario no quiere sonido
+        if(!quieroSonido) {
+            return;
+        }
 
-            mediaPlayer.pause();    // Pausar la música
+        // Si puede sonar, pausar el sonido
+        if(puedoSonar) {
+
+            mediaPlayer.pause();
         }
     }
 
@@ -710,11 +810,50 @@ public class JuegoFragment extends Fragment {
      */
     private void reanudarSonido() {
 
-        // Si no está inicializado, no hacer nada
-        if(mediaPlayer != null) {
+        // No hacer nada, si el usuario no quiere sonido
+        if(!quieroSonido) {
+            return;
+        }
 
-            mediaPlayer.start();    // Reanudar / comenzar la música
+        // Si puede sonar, reanudar el sonido
+        if(puedoSonar) {
+
+            mediaPlayer.start();
         }
     }
+
+    /**
+     * Lístener para el foco de audio.
+     */
+    AudioManager.OnAudioFocusChangeListener audioFocusChangeListener = new AudioManager.OnAudioFocusChangeListener() {
+
+        /**
+         * Método llamado cuando cambia el foco de audio.
+         *
+         * @param focusChange   tipo de cambio de foco de audio
+         */
+        public void onAudioFocusChange(int focusChange) {
+
+            // Actuar según el tipo de cambio de foco de audio
+            switch(focusChange) {
+
+                // Pérdida de foco de audio
+                case AudioManager.AUDIOFOCUS_LOSS :
+                case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT :
+
+                    // Pausar sonido
+                    pausarSonido();
+                    break;
+
+                // Ganancia de foco de audio
+                case AudioManager.AUDIOFOCUS_GAIN :
+                case AudioManager.AUDIOFOCUS_GAIN_TRANSIENT :
+
+                    // Reanudar sonido
+                    reanudarSonido();
+                    break;
+            }
+        }
+    };
 }
 
