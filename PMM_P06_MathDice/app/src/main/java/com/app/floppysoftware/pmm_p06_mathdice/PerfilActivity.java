@@ -69,7 +69,7 @@ public class PerfilActivity extends Activity implements PerfilFragment.PerfilFra
             FragmentTransaction ft = getFragmentManager().beginTransaction();
 
             // Crear y fijar el fragment
-            ft.add(R.id.fragmentPerfil, PerfilFragment.newInstance(perfil));
+            ft.add(R.id.fragmentPerfilMovil, PerfilFragment.newInstance(perfil));
 
             // Finalizar transacción
             ft.commit();

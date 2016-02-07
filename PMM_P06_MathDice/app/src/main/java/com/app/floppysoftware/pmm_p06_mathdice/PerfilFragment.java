@@ -433,7 +433,7 @@ public class PerfilFragment extends Fragment implements
             // Invalidar datos
             mLastLocation = null;
             
-        } else if(FAKE_LOCALIZACION) { // FIXME
+        } else if(FAKE_LOCALIZACION) { // FIXME -- Datos de localización para depuración
 
             // Falsear localización
             perfil.setLatitud(FAKE_LATITUD);

@@ -47,6 +47,8 @@
     <string name="error_haciendo_foto">No se pudo hacer la fotografía</string>
     <string name="error_grabando_foto">No se pudo grabar la fotografía</string>
 
+    <!-- Localización -->
+
     <string name="latitud_abreviada">Lat.</string>
     <string name="longitud_abreviada">Lon.</string>
 

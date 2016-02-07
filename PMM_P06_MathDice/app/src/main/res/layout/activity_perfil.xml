@@ -21,7 +21,7 @@
     <!-- Fragment que contiene el fragment del perfil -->
 
     <FrameLayout
-        android:id="@+id/fragmentPerfil"
+        android:id="@+id/fragmentPerfilMovil"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
