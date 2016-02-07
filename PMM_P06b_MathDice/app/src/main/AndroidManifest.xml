@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ Nota acerca de los atributos versionCode y versionName:
+
+     Según indica la documentación oficial de Android:
+
+     http://developer.android.com/tools/publishing/versioning.html
+
+     "You define both of these version attributes in the <manifest> element of the manifest file or the Gradle build file."
+
+     Por claridad, lo indico también aquí, pero se ha de tener en cuenta que únicamente
+     serán utilizados los valores indicados en el archivo app/build.gradle, por lo que necesariamente
+     se han de establecer también en dicho archivo.
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.app.floppysoftware.pmm_p06b_mathdice"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <!--
+         Permiso necesario para almacenar la foto de perfil en el almacenamiento externo privado,
+         en versiones < 4.4 de Android
+    -->
+
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
+
+    <!-- Permiso para utilizar la localización aproximada -->
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <!-- No se requiere cámara, aunque es deseable -->
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+    <!-- Permisos añadidos por GoogleMaps -->
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+
+        <!--
+             Splash Screen: Es la activity de inicio, ocupa toda
+             la pantalla del dispositivo, no muestra título ni menú, de ahí
+             que utilice un tema especial.
+        -->
+
+        <activity
+            android:name=".SplashActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.Splash" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!--
+             Activity del menú principal y área de juego, ocupa toda
+             la pantalla del dispositivo, no muestra título ni menú, de ahí
+             que utilice un tema especial.
+        -->
+
+        <activity
+            android:name=".PrincipalActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.Menu" >
+        </activity>
+
+        <!-- Activity de solicitud del perfil. -->
+
+        <activity
+            android:name=".PerfilActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <!-- Activity de juego -->
+
+        <activity
+            android:name=".JuegoActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <!-- Activity de información -->
+
+        <activity
+            android:name=".InformacionActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <!-- Activity de instrucciones -->
+
+        <activity
+            android:name=".InstruccionesActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <!-- Meta datos para GoogleMaps -->
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="@string/google_maps_key" />
+
+    </application>
+
+</manifest>

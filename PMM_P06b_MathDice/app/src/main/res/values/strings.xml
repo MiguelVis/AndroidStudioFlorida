@@ -1,0 +1,57 @@
+﻿<resources>
+    <!-- Nombre de la aplicación -->
+
+    <string name="app_name">MathDice6b</string>
+
+    <!-- Nombres de las opciones del menú (action bar) - no utilizado actualmente -->
+
+    <string name="action_settings">Settings</string>
+
+    <!-- Opciones del menú principal -->
+
+    <string name="menu_perfil">Perfil</string>
+    <string name="menu_juego">Juego</string>
+    <string name="menu_instrucciones">Instrucciones</string>
+    <string name="menu_informacion">Información</string>
+
+    <!-- Nombre del alumno -->
+
+    <string name="alumno">Alumno: Miguel I. García López</string>
+
+    <!-- Perfil -->
+
+    <string name="perfil_perfil">Perfil</string>
+    <string name="perfil_nombre">Nombre</string>
+    <string name="perfil_apellidos">Apellidos</string>
+    <string name="perfil_localizacion">Localización</string>
+    <string name="perfil_guardar">Guardar</string>
+    <string name="perfil_edad">Edad</string>
+    <string name="perfil_jugar">Jugar</string>
+    <string name="perfil_mapa">Mapa</string>
+
+    <!-- No implementado -->
+
+    <string name="no_implementado">No implementado.</string>
+
+    <!-- Mensaje a mostrar cuando se completa la partida -->
+
+    <string name="partida_math_dice">¡MathDice!</string>
+    <string name="title_activity_juego">JuegoActivity</string>
+
+    <!-- Diálogos -->
+
+    <string name="dialogo_error_titulo">Error</string>
+
+    <string name="dialogo_boton_ok">OK</string>
+
+    <string name="error_almacenamiento">Hay un problema con el almacenamiento externo</string>
+    <string name="error_haciendo_foto">No se pudo hacer la fotografía</string>
+    <string name="error_grabando_foto">No se pudo grabar la fotografía</string>
+
+    <string name="mapa_marcador_titulo">Aquí</string>
+    <string name="mapa_marcador_texto">Ésta es tu localización actual</string>
+
+    <string name="latitud_abreviada">Lat.</string>
+    <string name="longitud_abreviada">Lon.</string>
+
+</resources>

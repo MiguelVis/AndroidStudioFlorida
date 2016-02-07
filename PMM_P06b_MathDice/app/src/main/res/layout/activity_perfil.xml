@@ -1,0 +1,30 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp"
+    android:orientation="vertical"
+    android:background="@color/fondo"
+    tools:context="com.app.floppysoftware.pmm_p06b_mathdice.PerfilActivity">
+
+    <!-- Layout para dispositivos que no sean tablets -->
+
+    <!-- Título -->
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/perfil_titulo"
+        />
+
+    <!-- Fragment que contiene el fragment del perfil -->
+
+    <FrameLayout
+        android:id="@+id/fragmentPerfil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+</LinearLayout>

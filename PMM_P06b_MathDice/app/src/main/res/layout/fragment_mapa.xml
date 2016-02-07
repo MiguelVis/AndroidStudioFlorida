@@ -1,0 +1,26 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.app.floppysoftware.pmm_p06b_mathdice.MapaFragment"
+    android:id="@+id/linearLayoutMap"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerVertical="true"
+    android:layout_alignParentStart="true"
+    android:background="@color/black"
+    >
+
+    <!-- Fragment para el mapa -->
+
+    <!-- Está diseñado para que dibuje un borde de 2 pixels alrededor del mapa -->
+
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="2dp"
+        android:id="@+id/mapa"
+        android:name="com.google.android.gms.maps.MapFragment"
+        />
+
+</LinearLayout>

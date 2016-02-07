@@ -1,0 +1,36 @@
+https://www.floridaoberta.com/mod/assign/view.php?id=10674
+
+Fecha de entrega	Wednesday, 17 de February de 2016, 23:55
+
+Versión Google Maps
+
+Una vez que tenemos la longitud y latitud de nuestra posición, sería fantástico mostrarlo a través de un mapa en Google Maps.
+Para ello seguiremos utilizando Google API Services y Google Maps
+
+ENLACE A VIDEO DE AYUDA: https://vimeo.com/154117745
+CÓDIGO FUENTE DE AYUDA:  https://github.com/pacogomezarnal/DAM_Android_Examples/tree/master/Localizador
+
+NO EXISTE UNA ÚNICA SOLUCIÓN
+
+Pasos a realizar
+
+Utilizaremos el sexto proyecto como base
+
+Modificaremos el texto de Localización por dos posibles opciones:
+
+ - Un fragment estático dentro de nuestro fragment de perfil
+ - Un fragment que se cargaría de forma independiente a nuestro fragment de perfil
+
+Generamos nuestra autorización para usar el Google Maps API (https://developers.google.com/maps/documentation/android-api/signup, https://developers.google.com/maps/documentation/android-api/start)
+
+Utilizamos el ayudante de Android Studio para incorporar el google el google_maps_api y resto de código
+
+Incorporamos nuestro mapa con la localización
+
+Cómo se sube
+
+Enlace a proyecto en github
+
+Cómo se evalúa
+
+Pincha aquí, fichero de rúbrica: https://docs.google.com/document/d/1Z70znoJREYGKPXkGwhiZinvzaNUmQicrtpS47IfxbvY/edit?usp=sharing
