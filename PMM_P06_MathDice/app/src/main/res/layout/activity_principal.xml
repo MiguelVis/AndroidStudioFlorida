@@ -1,0 +1,22 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="@color/fondo"
+    tools:context=".MainActivity">
+
+    <!-- Layout para dispositivos que no sean tablets -->
+
+    <!-- Fragment estático que contiene el menú -->
+
+    <fragment
+        android:name="com.app.floppysoftware.pmm_p06_mathdice.MenuFragment"
+        android:id="@+id/fragmentMenu"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        tools:layout="@layout/fragment_menu"
+        />
+
+</LinearLayout>

@@ -1,0 +1,33 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context="com.app.floppysoftware.pmm_p06_mathdice.InicialFragment">
+
+    <!-- Layout para dispositivos de tipo tablet -->
+
+    <!-- Logo -->
+
+    <ImageView
+        android:id="@+id/imageViewLogoFloppySoftware"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+    <!-- Texto -->
+
+    <TextView
+        android:id="@+id/textViewNombreAlumno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="64dp"
+        android:elegantTextHeight="true"
+        android:textStyle="bold"
+        android:textSize="32sp"
+        android:typeface="sans"
+        android:textColor="@color/white"
+        />
+
+</LinearLayout>

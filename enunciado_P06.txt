@@ -1,0 +1,42 @@
+P06 - Mathdice perfil
+---------------------
+
+Fecha de entrega Friday, 12 de February de 2016, 23:55 
+
+https://docs.google.com/document/d/1HR5A-nULWrmqyXDa9fj3g2ZR9xuTr_ujxgo_3UMtSBg/edit
+
+Descripción del proyecto
+ 
+En este punto le toca al apartado Perfil. A partir de las dos últimas Lecciones, Cámara y Localización, añadiremos una ventana a nuestro proyecto que almacene los datos básicos de nuestro Jugador, y que cuando vuelva a entrar en el juego estos datos persistan, para ello los datos se pueden guardar bien en SQLite(Enlace a la documentación de Acceso a Datos, Doc1 y Doc2) o bien en Preferencias (Enlace a la documentación de Acceso a Datos).
+
+(ver p06_Conexion_SQLite.pdf y p06_Consultas)
+(ver p06_Preferencias.pdf)
+
+Una posibilidad de pantalla de perfil puede ser la siguiente:
+
+(ver p06.png)
+
+NO EXISTE UNA ÚNICA SOLUCIÓN
+ 
+Pasos a realizar
+ 
+1.Utilizaremos el quinto proyecto como base
+
+2.Crearemos un nuevo Fragment que mostrará el Perfil de usuario. En el mismo como MÍNIMO debe aparecer:
+
+?2 campos para recoger el nombre y los apellidos
+
+?La posibilidad de capturar una foto que se añade al perfil
+
+?La localización automática del usuario
+
+?Un botón de guardado para poder actualizar o crear el registro, bien en las preferencias, bien en en una base de datos SQLite
+
+Cómo se sube
+
+Enlace a proyecto en github
+
+Cómo se evalúa
+
+Pincha aquí, fichero de rúbrica:
+	https://docs.google.com/document/d/1Z70znoJREYGKPXkGwhiZinvzaNUmQicrtpS47IfxbvY/edit

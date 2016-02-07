@@ -1,0 +1,20 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo"
+    tools:context="com.app.floppysoftware.pmm_p06_mathdice.InformacionActivity">
+
+    <!-- Layout para dispositivos que no sean tablets -->
+
+    <!-- Fragment estático que contiene el fragment de información -->
+
+    <fragment
+        android:name="com.app.floppysoftware.pmm_p06_mathdice.InformacionFragment"
+        android:id="@+id/fragmentInformacion"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout="@layout/fragment_informacion"
+        />
+
+</RelativeLayout>

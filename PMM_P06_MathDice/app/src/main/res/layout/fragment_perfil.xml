@@ -1,0 +1,112 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp"
+    android:background="@color/fondo"
+    tools:context="com.app.floppysoftware.pmm_p06_mathdice.PerfilFragment">
+
+    <!-- Fotografía -->
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/imageViewFoto"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/perfil_vacio"
+        android:background="@color/black"
+        android:padding="2dp"
+        android:layout_marginBottom="16dp"
+        android:scaleType="fitStart"
+        android:adjustViewBounds="true"
+        />
+
+    <!-- Botón de la cámara -->
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageButtonCamara"
+        android:layout_toRightOf="@+id/imageViewFoto"
+        android:layout_toEndOf="@+id/imageViewFoto"
+        android:src="@drawable/ic_camera"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        />
+
+    <!-- Nombre -->
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:id="@+id/editTextNombre"
+        android:hint="@string/perfil_nombre"
+        android:layout_gravity="center_horizontal"
+        android:layout_below="@+id/imageViewFoto"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="8dp"
+        />
+
+    <!-- Apellidos -->
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:id="@+id/editTextApellidos"
+        android:hint="@string/perfil_apellidos"
+        android:layout_gravity="center_horizontal"
+        android:layout_below="@+id/editTextNombre"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="8dp"
+        />
+
+    <!-- Edad -->
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:id="@+id/editTextEdad"
+        android:hint="@string/perfil_edad"
+        android:layout_gravity="center_horizontal"
+        android:layout_below="@+id/editTextApellidos"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="16dp"
+        />
+
+    <!-- Localización -->
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="none"
+        android:textIsSelectable="true"
+        android:id="@+id/editTextLocalizacion"
+        android:hint="@string/perfil_localizacion"
+        android:layout_gravity="center_horizontal"
+        android:layout_below="@+id/editTextEdad"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        />
+
+    <!-- Botón para guardar -->
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/perfil_guardar"
+        android:id="@+id/buttonGuardar"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        />
+
+
+</RelativeLayout>

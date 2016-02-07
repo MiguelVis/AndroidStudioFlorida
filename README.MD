@@ -27,10 +27,20 @@ P04
 
 Proyecto 04: Juego MathDice, múltiples dispositivos.
 
-P04
+P05
 ---
 
 Proyecto 05: Juego MathDice, con música de fondo.
+
+P06
+---
+
+Proyecto 06: Juego MathDice, perfil (cámara, localización y preferencias).
+
+P06b
+----
+
+Proyecto 06b: Juego MathDice, con Google Maps.
 
 R01
 ---

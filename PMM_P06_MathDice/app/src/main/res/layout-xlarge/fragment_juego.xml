@@ -1,0 +1,146 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:orientation="horizontal"
+    tools:context="com.app.floppysoftware.pmm_p06_mathdice.JuegoFragment">
+
+    <!-- Layout para dispositivos de tipo tablet -->
+
+    <!-- Layout para los dados y botones -->
+
+    <!-- Nota: Las imágenes de los dados y los textos se han puesto únicamente para ver
+               mejor el layout en tiempo de diseño -->
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <!-- Dados rojos del 1 al 3 -->
+
+        <ImageView
+            android:id="@+id/imageViewDadoTres1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_dados"
+            android:src="@drawable/dado_3_1"
+            />
+
+        <ImageView
+            android:id="@+id/imageViewDadoTres2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_dados"
+            android:layout_toRightOf="@id/imageViewDadoTres1"
+            android:layout_toEndOf="@id/imageViewDadoTres1"
+            android:src="@drawable/dado_3_2"
+            />
+
+        <!-- Dados azules del 1 al 6 -->
+
+        <ImageView
+            android:id="@+id/imageViewDadoSeis1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_dados"
+            android:layout_below="@id/imageViewDadoTres1"
+            android:src="@drawable/dado_6_1"
+            />
+
+        <ImageView
+            android:id="@+id/imageViewDadoSeis2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_dados"
+            android:layout_toRightOf="@id/imageViewDadoSeis1"
+            android:layout_toEndOf="@id/imageViewDadoSeis1"
+            android:layout_alignBottom="@id/imageViewDadoSeis1"
+            android:src="@drawable/dado_6_2"
+            />
+
+        <ImageView
+            android:id="@+id/imageViewDadoSeis3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_dados"
+            android:layout_toRightOf="@id/imageViewDadoSeis2"
+            android:layout_toEndOf="@id/imageViewDadoSeis2"
+            android:layout_alignBottom="@id/imageViewDadoSeis1"
+            android:src="@drawable/dado_6_3"
+            />
+
+        <!-- Dado dodecaedro (del 1 al 12) -->
+
+        <ImageView
+            android:id="@+id/imageViewDodecaedro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_dados"
+            android:layout_below="@id/imageViewDadoSeis1"
+            android:src="@drawable/dode_1"
+            />
+
+        <!-- Botones de suma y resta -->
+
+        <ImageView
+            android:id="@+id/imageViewBotonSuma"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_dados"
+            android:layout_below="@id/imageViewDodecaedro"
+            android:src="@drawable/boton_suma"
+            />
+
+        <ImageView
+            android:id="@+id/imageViewBotonResta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_dados"
+            android:layout_toRightOf="@id/imageViewBotonSuma"
+            android:layout_toEndOf="@id/imageViewBotonSuma"
+            android:layout_alignBottom="@id/imageViewBotonSuma"
+            android:src="@drawable/boton_resta"
+            />
+
+    </RelativeLayout>
+
+    <!-- Layout para visualizar la operación y el resultado -->
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/textViewOperacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="oper"
+            android:textSize="128sp"
+            android:textStyle="bold"
+            android:typeface="monospace"
+            android:textColor="@color/white"
+            />
+
+        <TextView
+            android:id="@+id/textViewResultado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="rt"
+            android:textSize="128sp"
+            android:textStyle="bold"
+            android:typeface="monospace"
+            android:textColor="@color/white"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>
