@@ -24,18 +24,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.File;
 import java.lang.ref.WeakReference;
@@ -45,8 +37,8 @@ import java.lang.ref.WeakReference;
  * grandes, se visualiza un mapa; en pantallas pequeñas, hay un botón que lanza el mapa.
  *
  * @author  Miguel I. García López
- * @version 1.3
- * @since   05 Feb 2016
+ * @version 1.4
+ * @since   07 Feb 2016
  */
 public class PerfilFragment extends Fragment implements
         GoogleApiClient.ConnectionCallbacks,
@@ -93,7 +85,7 @@ public class PerfilFragment extends Fragment implements
     private Button buttonGuardar;
 
     // Botón para lanzar el mapa en pantallas pequeñas
-    private Button buttonMapa;
+    private Button buttonMapaMovil;
 
     // Datos del perfil
     private Perfil perfil;
@@ -113,6 +105,9 @@ public class PerfilFragment extends Fragment implements
     // Indicador de tamaño de pantalla
     private boolean pantallaGrande;
 
+    // Fragment para el mapa (versión tablet)
+    MapaFragment mapaFragmentTablet;
+
     // Lístener para interactuar con la activity
     private PerfilFragmentListener mListener;
 
@@ -124,6 +119,9 @@ public class PerfilFragment extends Fragment implements
 
         // Método a implementar, para indicar los datos del perfil
         public void onPerfilSelected(Perfil perfil);
+
+        // Método a implementar, para visualizar el mapa (sólo móviles)
+        public void onClickMapaMovil(double latitud, double longitud);
     }
 
     /**
@@ -196,7 +194,7 @@ public class PerfilFragment extends Fragment implements
 
         // Averiguar tipo de pantalla, según esté presente o no el fragment del mapa
         // en el layout.
-        pantallaGrande = v.findViewById(R.id.fragmentMapa) != null;
+        pantallaGrande = v.findViewById(R.id.fragmentMapaTablet) != null;
 
         //
         Log.i(TAG, "pantallaGrande = " + pantallaGrande);
@@ -294,16 +292,33 @@ public class PerfilFragment extends Fragment implements
             Log.i(TAG, "El dispositivo no tiene cámara");
         }
 
-        // Configuración dependiendo del tipo de pantalla
-        if(!pantallaGrande) {
+        // Configurar algunas cosas, dependiendo del tipo de pantalla
+        if(pantallaGrande) {
+
+            //  Inicializar fragment para el mapa (sólo tablets)
+            if(mapaFragmentTablet == null) {
+
+                // Crear objeto para el mapa
+                mapaFragmentTablet = new MapaFragment();
+
+                // Iniciar transacción
+                FragmentTransaction ft = getChildFragmentManager().beginTransaction();
+
+                // Añadir
+                ft.add(R.id.fragmentMapaTablet, mapaFragmentTablet);
+
+                // Solicitar commit de la transacción
+                ft.commit();
+            }
+        } else  {
 
             // Pantalla pequeña
 
             // Tomar la referencia del botón para visualizar el mapa
-            buttonMapa = (Button) getActivity().findViewById(R.id.buttonMaps);
+            buttonMapaMovil = (Button) getActivity().findViewById(R.id.buttonMaps);
 
             // Fijar el lístener del botón
-            buttonMapa.setOnClickListener(new View.OnClickListener() {
+            buttonMapaMovil.setOnClickListener(new View.OnClickListener() {
 
                 /**
                  * Método llamado al hacer click en el botón. Mostrar el mapa.
@@ -313,19 +328,8 @@ public class PerfilFragment extends Fragment implements
                 @Override
                 public void onClick(View view) {
 
-                    // Iniciar transacción
-                    FragmentTransaction ft = getFragmentManager().beginTransaction();
-
-                    // Reemplazar el fragment actual (éste), por el del mapa, creando
-                    // un fragment de mapa y pasándole los datos de la localización.
-                    ft.replace(R.id.fragmentPerfil, MapaFragment.newInstance(perfil.getLatitud(), perfil.getLongitud()));
-
-                    // Añadir transacción al Back Stack, de manera que se pueda volver al
-                    // fragment actual (éste).
-                    ft.addToBackStack(null);
-
-                    // Solicitar commit de la transacción
-                    ft.commit();
+                    // Indicar a la activity que lance el mapa
+                    mListener.onClickMapaMovil(perfil.getLatitud(), perfil.getLongitud());
                 }
             });
         }
@@ -514,7 +518,7 @@ public class PerfilFragment extends Fragment implements
             // Invalidar datos
             mLastLocation = null;
 
-        } else if(FAKE_LOCALIZACION) { // FIXME
+        } else if(FAKE_LOCALIZACION) { // FIXME -- datos ficticios para depuración
 
             // Falsear localización
             perfil.setLatitud(FAKE_LATITUD);
@@ -551,8 +555,8 @@ public class PerfilFragment extends Fragment implements
                 // Pantalla pequeña
 
                 // Habilitar botón del mapa
-                if(!buttonMapa.isEnabled()) {
-                    buttonMapa.setEnabled(true);
+                if(!buttonMapaMovil.isEnabled()) {
+                    buttonMapaMovil.setEnabled(true);
                 }
             }
 
@@ -568,8 +572,8 @@ public class PerfilFragment extends Fragment implements
                 // Pantalla pequeña
 
                 // Deshabilitar botón del mapa
-                if(buttonMapa.isEnabled()) {
-                    buttonMapa.setEnabled(false);
+                if(buttonMapaMovil.isEnabled()) {
+                    buttonMapaMovil.setEnabled(false);
                 }
             }
 
@@ -1013,11 +1017,8 @@ public class PerfilFragment extends Fragment implements
      */
     private void refreshMapa() {
 
-        // Tomar referencia del fragment del mapa
-        MapaFragment fragmentMapa = (MapaFragment) getChildFragmentManager().findFragmentById(R.id.fragmentMapa);
-
         // Indicarle los datos de localización
-        fragmentMapa.localiza(perfil.getLatitud(), perfil.getLongitud());
+        mapaFragmentTablet.localiza(perfil.getLatitud(), perfil.getLongitud());
     }
 
     /**

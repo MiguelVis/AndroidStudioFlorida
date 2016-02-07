@@ -10,8 +10,8 @@ import android.os.Bundle;
  * en dispositivos que no sean tablets.
  *
  * @author  Miguel I. García López
- * @version 1.2
- * @since   31 Jan 2016
+ * @version 1.3
+ * @since   07 Feb 2016
  */
 public class PerfilActivity extends Activity implements PerfilFragment.PerfilFragmentListener {
 
@@ -38,6 +38,30 @@ public class PerfilActivity extends Activity implements PerfilFragment.PerfilFra
 
         // Finalizar esta activity
         finish();
+    }
+
+    /**
+     * Este método será llamado desde el fragment de perfil, cuando
+     * el usuario pulse el botón del mapa. Solo para pantallas
+     * pequeñas tipo móvil. Lanza el fragment del mapa.
+     *
+     * @param latitud   latitud
+     * @param longitud  longitud
+     */
+    public void onClickMapaMovil(double latitud, double longitud) {
+
+        // Iniciar transacción
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+
+        // Crear y añadir un fragment de mapa, pasándole los datos de la localización.
+        ft.add(R.id.fragmentPerfilMovil, MapaFragment.newInstance(latitud, longitud));
+
+        // Añadir transacción al Back Stack, de manera que se pueda volver al
+        // fragment anterior (el de perfil), al pulsar la tecla de Back.
+        ft.addToBackStack(null);
+
+        // Solicitar commit de la transacción
+        ft.commit();
     }
 
     /**
@@ -69,7 +93,7 @@ public class PerfilActivity extends Activity implements PerfilFragment.PerfilFra
             FragmentTransaction ft = getFragmentManager().beginTransaction();
 
             // Crear y fijar el fragment
-            ft.add(R.id.fragmentPerfil, PerfilFragment.newInstance(perfil));
+            ft.add(R.id.fragmentPerfilMovil, PerfilFragment.newInstance(perfil));
 
             // Finalizar transacción
             ft.commit();

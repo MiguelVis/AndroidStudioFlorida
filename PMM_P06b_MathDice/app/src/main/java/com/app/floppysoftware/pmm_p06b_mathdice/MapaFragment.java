@@ -1,12 +1,12 @@
 package com.app.floppysoftware.pmm_p06b_mathdice;
 
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -20,8 +20,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
  * Fragment que implementa el mapa.
  *
  * @author  Miguel I. García López
- * @version 1.0
- * @since   06 Feb 2016
+ * @version 1.1
+ * @since   07 Feb 2016
  */
 public class MapaFragment extends Fragment implements OnMapReadyCallback {
 
@@ -121,11 +121,17 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
         // Inflar el layout del fragment
         View v = inflater.inflate(R.layout.fragment_mapa, container, false);
 
-        // Inicializar fragment de mapa, si no lo está ya
+        // Inicializar fragment del mapa, si no lo está ya
         if(mapFragment == null) {
 
-            // Inicializar fragment del mapa
-            mapFragment = (MapFragment) getChildFragmentManager().findFragmentById(R.id.mapa);
+            // Crear objeto fragment de Google Maps
+            mapFragment = new MapFragment();
+
+            // Iniciar transacción
+            FragmentTransaction ft = getChildFragmentManager().beginTransaction();
+
+            // Añadir
+            ft.add(R.id.mapaGoogle, mapFragment).commit();
 
             // Tomar manejador del mapa, de manera asíncrona (cuando el
             // mapa esté listo, se llamará al método onMapReady().
@@ -137,7 +143,8 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
     }
 
     /**
-     * Método que será llamado cuando el mapa esté listo.
+     * Método que será llamado cuando el mapa esté listo. Refrescar
+     * el mapa.
      *
      * @param googleMap   mapa
      */
@@ -149,11 +156,10 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
 
         // Refrescar mapa
         refreshMapa();
-
     }
 
     /**
-     * Fijar localización en el mapa.
+     * Señalar localización en el mapa.
      *
      * @param latitud   latitud
      * @param longitud  longitud
@@ -173,7 +179,8 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
      */
     private void refreshMapa() {
 
-        // Abortar, si el mapa no está inicializado, o la localización no es correcta
+        // Abortar, si el mapa no está inicializado,
+        // o la localización no está disponible.
         if(mMap == null || latitud == LOCALIZACION_DESCONOCIDA || longitud == LOCALIZACION_DESCONOCIDA) {
             return;
         }

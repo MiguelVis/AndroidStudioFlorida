@@ -7,13 +7,14 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 /**
  * Clase que implementa la pantalla principal mediante fragments.
  *
  * @author  Miguel I. García López
- * @version 1.5
- * @since   31 Jan 2016
+ * @version 1.6
+ * @since   07 Feb 2016
  */
 public class PrincipalActivity extends Activity implements MenuFragment.MenuFragmentListener, PerfilFragment.PerfilFragmentListener {
 
@@ -172,6 +173,24 @@ public class PrincipalActivity extends Activity implements MenuFragment.MenuFrag
 
         // Volver al fragment de inicio
         fijaFragmentArea(inicialFragment);
+    }
+
+    /**
+     * Este método será llamado desde el fragment de perfil, cuando
+     * el usuario pulse el botón del mapa. Solo para pantallas
+     * pequeñas tipo móvil.
+     *
+     * @param latitud   latitud
+     * @param longitud  longitud
+     */
+    public void onClickMapaMovil(double latitud, double longitud) {
+
+        // No es necesario hacer nada, pues este método
+        // no será llamado nunca en esta activity, sino
+        // en la de perfil, que se lanza en la versión para
+        // móviles. En la versión para tablets no hay
+        // botón para el mapa, pues está integrado en el
+        // layout del fragment de perfil.
     }
 
     /**

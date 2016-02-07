@@ -1,4 +1,5 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -106,12 +107,10 @@
 
     <!-- Fragment para el mapa -->
 
-    <fragment
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/fragmentMapa"
-        android:name="com.app.floppysoftware.pmm_p06b_mathdice.MapaFragment"
-        tools:layout="@layout/fragment_mapa"
+        android:id="@+id/fragmentMapaTablet"
         android:layout_below="@+id/editTextLocalizacion"
         android:layout_above="@+id/buttonGuardar"
         android:layout_marginBottom="8dp"
